@@ -1,0 +1,32 @@
+{
+  "threshold": 0.5,
+  "threshold_reason": "just above the highest-scoring validation negative (0.47); catches 100% of validation Vektoras",
+  "test": {
+    "hits": 9,
+    "misses": 0,
+    "false_accepts": 1,
+    "correct_rejects": 25,
+    "accuracy": 0.9714285714285714,
+    "precision": 0.9,
+    "recall": 1.0,
+    "per_source": {
+      "Vektora (project mic)": {
+        "n": 9,
+        "correct": 9
+      },
+      "soft negative": {
+        "n": 4,
+        "correct": 3
+      },
+      "synthetic noise": {
+        "n": 22,
+        "correct": 22
+      }
+    }
+  },
+  "continuous_speech": null,
+  "best_epoch": 11,
+  "epochs_run": 23,
+  "params": 23697,
+  "train_clips_after_augmentation": 1570
+}

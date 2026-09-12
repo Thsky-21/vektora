@@ -1,0 +1,27 @@
+# Python virtual environment
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Bulk audio datasets -- never commit these.
+# Google Speech Commands alone is ~2.3 GB.
+speech_commands*/
+*.tar.gz
+*.zip
+
+# Demo: raw recordings (includes private phone talking; this repo is public)
+demo/data/
+
+# Generated feature arrays
+*.npy
+*.npz
+
+# Trained models (regenerate from training scripts)
+*.keras
+*.h5
+*.tflite
+
+# OS / editor
+.DS_Store
+Thumbs.db
