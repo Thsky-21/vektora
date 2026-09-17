@@ -16,110 +16,62 @@ original SIH26172 goals and make good "next steps" slides.
 
 ---
 
-## ⏵ RESUME HERE (handoff written 2026-09-12, ~09:00)
+## ⏵ CURRENT VERSION — read this first (written 2026-09-12, ~10:50, demo day)
 
-**Everything is built and working locally. Not deployed yet. The one unsolved
-problem is live detection through the browser microphone.**
+**This section describes the model that is actually trained, committed and
+running.** Everything below it in this file is the original plan and the
+learning material; where the two disagree, this section is right. The full build detail is **§15 at the end of this file**. In
+particular §0.4's "v1" numbers are **historical** — that model was trained on
+phone/browser recordings that the current one deliberately does not use.
 
-### State in one paragraph
+### The one-paragraph summary
 
-The demo is a 2-class CNN ("Vektora" vs everything else) in `demo/`, trained on
-the team's GitHub clips plus the user's own recordings. On held-out *files* it
-is excellent (10/10 keywords caught, 0 false alarms across 32 s of continuous
-talking). Through the **live browser mic** it is weak: of 6 recorded live
-"Vektora"s only **2 fire at Balanced, 4 at Sensitive**. Cause: only 6 live
-examples exist, versus 63 project-mic ones. **Fix: the user records 3–5 more
-batches in the app's "🎓 Teach it" tab, then re-run `prepare_data.py` +
-`train.py`.** Nothing else is blocking; deployment is a 10-minute step whenever
-the user is happy.
+A 2-class convolutional neural network, 23,697 parameters, that answers one
+question about one second of audio: *is that "Vektora"?* It is trained on the
+repository's own recordings and **nothing else**: 63 positives
+(`vektora_*.wav`) and 27 soft negatives (`soft-negative/*.wav`, the look-alike
+words "vector" and "victor"), plus 150 noise clips generated in code so that
+silence is never guessed at. It is served by a Streamlit page (`demo/app.py`)
+that records from the browser, slides a 1-second window across the recording,
+and reports the best score against a threshold of 0.50.
 
-### Immediate next actions
+### Results — every number measured, none estimated
 
-1. **Ask the user to record more live keywords** — "🎓 Teach it" tab at
-   http://localhost:8501, "✅ me saying Vektora", 5–10 repetitions per batch,
-   3–5 batches, varying distance/loudness/speed. Target ≥ 30 live words.
-   (One batch of 30–60 s of live talking already exists; more is optional.)
-2. **Retrain:** `.venv/Scripts/python.exe demo/prepare_data.py` then
-   `demo/train.py` (~3 min). Then re-score the live words with the snippet in
-   "Diagnostics worth repeating" below. Expect most to clear the threshold.
-3. **Deploy** (§11): user runs `.venv/Scripts/hf.exe auth login` in their own
-   terminal with a Write token, then `.venv/Scripts/python.exe demo/deploy.py`
-   → <https://huggingface.co/spaces/ThSky21/vektora-demo>. First build ≈ 5–10 min.
-4. **Rehearse** on the live URL (§12). Presentation is **today**.
-
-### Hard-won lessons — do not rediscover these
-
-- **Run exactly ONE Streamlit server, and restart it after retraining.** Three
-  servers were running at once; the oldest held port 8501 and served a
-  **cached v0 model**, which looked exactly like "training didn't work" and
-  cost an hour. Check with:
-  `powershell -NoProfile -Command "Get-CimInstance Win32_Process -Filter \"Name='python.exe'\" | Where-Object { \$_.CommandLine -like '*streamlit*' } | Select ProcessId"`
-  (`app.py` now keys its cache on the model file's timestamp, so a stale model
-  can't survive a retrain, but a stale *server* still serves stale code.)
-- **Streamlit runs every tab in one pass.** An exception in one tab blanks all
-  the others — that's why the "Teach it" tab appeared to be missing. The
-  risky call is now wrapped in try/except.
-- **The user's live-mic complaint was measured, not guessed.** All 25 live
-  captures in `demo/data/live_captures/` score ≤ 0.45 with the current model,
-  i.e. ordinary speech does **not** fire it. Whether any of those captures were
-  the user *saying* "Vektora" is **still unanswered** — worth asking.
-- **Two dead ends, already tried — don't repeat:**
-  1. *"Loudness is the cue"* — disproved: making held-out talking full-volume
-     only lifts it to 0.33.
-  2. *Mixing browser-mic babble into positives at SNR 3–25 dB* — made live
-     detection **worse** (0/6 fired). Reverted; see the comment in `train.py`.
-
-### Diagnostics worth repeating after each retrain
-
-```bash
-cd /c/Users/User/documents/vektora
-PYTHONIOENCODING=utf-8 .venv/Scripts/python.exe - <<'EOF'
-import sys, glob, numpy as np
-sys.path.insert(0, "demo")
-import app, audio_utils as au
-model, norm, metrics = app.load_model(); thr = metrics["threshold"]
-seg = sorted(glob.glob("demo/data/_vektora_word_segments/live_vektora_*.wav"))
-s = np.array([app.analyse(au.load_audio(f), model, norm, thr)["best_score"] for f in seg])
-print(f"thr {thr:.2f} | live words: " + " ".join(f"{v:.2f}" for v in s) + f" -> {(s>=thr).sum()}/{len(s)} fire")
-caps = np.array([app.analyse(au.load_audio(f), model, norm, thr)["best_score"]
-                 for f in sorted(glob.glob("demo/data/live_captures/*.wav"))])
-print(f"live captures (should NOT fire): max {caps.max():.2f}, {(caps>=thr).sum()} fire")
-EOF
-```
-
-### Current numbers (model trained 2026-09-12 ~08:55, threshold 0.52)
-
-| Measure | Value |
+| Measure | Result |
 |---|---|
-| Test clips | 97 (10 Vektora, 87 other) |
-| Hits / misses | **10 / 0** |
-| False accepts | **1** (a soft negative: "vector"/"victor") |
-| Held-out talking, clip by clip | 53/53 laptop + 8/8 browser-mic rejected |
-| Sliding across 32 s of held-out talking | **0 false fires**, top score 0.14 |
-| Live browser "Vektora" (6 words) | 0.29 0.29 0.60 0.38 0.46 0.54 → **2/6 Balanced, 4/6 Sensitive** |
-| Model | 23,697 parameters, 3,294 training clips after augmentation |
+| **All 63 "Vektora" files** | **62/63 fire**, median score 0.98 |
+| **All 27 soft-negative files** | **0/27 fire**, highest score 0.23 |
+| Held-out test set (35 clips never trained on) | 8 hits, 1 miss, **0 false accepts**, 26 correct rejects |
+| Test accuracy / precision / recall | 97.1% / 1.00 / 0.89 |
+| Threshold | **0.50**, chosen on validation (highest validation negative scored 0.17) |
+| Model size | 23,697 parameters (~93 KB float32, ~24 KB if quantised to int8) |
+| Training set after augmentation | 3,006 clips |
+| Training run | 23 epochs, best epoch 11, early stopping restored epoch 11 |
+| Live browser-mic "Vektora" (6 recorded words) | 4/6 fire: 0.04, 0.25, **0.65, 0.68, 0.83, 0.89** |
 
-### Where things live
+The separation on files is decisive rather than lucky: look-alikes top out at
+0.23, the threshold sits at 0.50, real keywords sit at 0.9+. **Nothing scores
+between 0.25 and 0.65.**
 
-- `demo.md` (this file): §0.4 status, §5 the teaching material, §10 runbook,
-  §11 deploy, §12 presentation script, §13 demo-day backups.
-- `demo/`: `audio_utils.py` (shared audio→picture), `plots.py` (chart style),
-  `prepare_data.py`, `train.py`, `app.py`, `deploy.py`, `Dockerfile`,
-  `requirements.txt`, `README.md` (Space config), `model/`, `plots/`, `examples/`.
-- `demo/data/` (git-ignored, never uploaded): `other_speech/` (3-min laptop
-  m4a), `live_vektora/` + `live_other/` (browser-mic, from the Teach-it tab),
-  `live_captures/` (auto-saved live tests), `_vektora_word_segments/` (the cut
-  words — listen to these to check the cutting).
-- Raw team data: `vektora_*.wav` (63) and `soft-negative/` (27) in the repo root.
-- **Nothing is committed to git yet** (`git status` shows everything untracked).
+### The one honest limitation, stated plainly
 
-### Environment traps (also in `CLAUDE.md` §1)
+Both datasets are **close-mic studio recordings**: the speaker is inches from a
+good microphone and 86 of the 90 files are clipped (recorded too loud). Live
+browser audio is a different world — a metre of room between mouth and laptop,
+reflections, Chrome's automatic gain control and noise suppression, no
+clipping. **The model has never seen a single sample of it.** Consequences:
 
-- Always `.venv/Scripts/python.exe`; never bare `python`/`pip`.
-- `protobuf` must stay pinned at **4.25.9** (streamlit wants 7, TF 2.15 needs < 5).
-- ffmpeg on this machine is from **2013**: no `-hide_banner`; m4a must be
-  decoded from a temp **file**, not a pipe (both handled in `audio_utils.py`).
-- Feature FFT size is **400**, not 512, or the picture is 97 frames, not 98.
+- Vektora versus look-alike words: **solid**, on files.
+- Vektora versus free-form conversation through a laptop mic: **not solid** —
+  ordinary talking can score high, because "ordinary talking" is not in either
+  dataset. This is the same gap §3 of this file describes, and it is the
+  price of training on these two datasets only.
+
+What closes it is not a cleverer model: it is ~90 seconds of recording through
+the demo's own microphone (10 × "Vektora", 10 × "vector/victor"). That was
+offered and declined for time on demo day; the code path for it still exists
+(`ROOM_AGC` in `train.py`, and the folders `demo/data/live_vektora/`,
+`demo/data/live_other/`).
 
 ---
 
@@ -140,6 +92,7 @@ EOF
 12. [Presentation script + likely questions](#12-presentation)
 13. [Demo-day risks and backups](#13-demo-day-risks-and-backups)
 14. [Progress checklist](#14-progress-checklist)
+15. [How this version was built, in full detail](#15-how-this-version-was-built-in-full-detail) ← **the shipped model**
 
 ---
 
@@ -226,7 +179,13 @@ Answered 2026-09-11:
 | Q3: Hugging Face account / username | **`ThSky21`** (<https://huggingface.co/ThSky21>) | The Space will be `https://huggingface.co/spaces/ThSky21/vektora-demo` |
 | Q4: `sih26172/` keep or delete | **Delete.** Keep only the build plan and project details | Done: `sih26172/` deleted. Kept: `demo.md`, `CONTEXT.md`, `CLAUDE.md`, `.gitignore`, `.venv/` |
 
-### 0.4 Build status — what exists now (2026-09-11, evening)
+### 0.4 Build status  — **HISTORICAL (2026-09-11 → 12 morning).**
+*Superseded by the CURRENT VERSION section at the top and §15. The v0/v1
+models described below were trained on phone and browser recordings that the
+shipped model deliberately does not use. Kept because the reasoning is still
+worth reading.*
+
+#### Original text — what exists now (2026-09-11, evening)
 
 **Everything is built and tested locally. Model "v0" is trained WITHOUT your
 phone recordings.** Two steps remain: record → retrain, then deploy.
@@ -826,3 +785,296 @@ locally.
   in step 3 tonight?
 - **Q3.** Do you have a **Hugging Face account**? What's the username?
 - **Q4.** `sih26172/`: **keep aside** (default) or **delete**?
+
+---
+
+## 15. How this version was built, in full detail
+
+### 15.1 The data
+
+| Source | Files | Label | Where |
+|---|---|---|---|
+| "Vektora", spoken by 5–6 people | **63** | 1 | `vektora_*.wav`, repo root |
+| Look-alike words ("vector", "victor"), 2–3 people | **27** | 0 | `soft-negative/*.wav` |
+| Synthetic noise generated in code | **150** | 0 | none — made fresh each run |
+
+Every real file is already 16 kHz, mono, exactly 1.000 s, so nothing is
+resampled or trimmed. Each is **peak-normalised** to 0.9 so that a loud project
+mic and a quiet laptop mic look alike to the model.
+
+The synthetic noise is five kinds in equal share — white (hiss), pink (fans,
+rain), brown (rumble), 50/60 Hz mains hum, and near-silence — each at a random
+level. It is not padding: without a "this is not speech at all" category,
+digital silence and room hiss land in unexplored territory and get a confident
+guess.
+
+**Everything else was deliberately excluded** (`GITHUB_ONLY = True` in
+`prepare_data.py`): phone recordings, browser-mic recordings, the 3-minute
+conversation recording, and room noise. The folders are untouched on disk;
+setting that one flag to `False` brings them all back.
+
+### 15.2 The split — 70 / 15 / 15, stratified
+
+| Split | Total | Vektora | Soft negative | Noise |
+|---|---|---|---|---|
+| train | 170 | 45 | 19 | 106 |
+| val | 35 | 9 | 4 | 22 |
+| test | 35 | 9 | 4 | 22 |
+
+Split with a fixed seed (42), so the same clips land in the same split on every
+run and results are comparable between experiments. Train is what the model
+learns from; validation is what chooses the threshold and stops the training;
+**test is scored once, at the end, and never used to make a decision.**
+
+### 15.3 Features — sound into a picture
+
+Every 1-second clip becomes a **log-mel spectrogram of 98 × 40 × 1**:
+
+| Setting | Value | Why |
+|---|---|---|
+| Sample rate | 16,000 Hz | Covers everything that makes speech intelligible |
+| Window | 400 samples (25 ms) | Speech sounds change every few tens of ms |
+| Hop | 160 samples (10 ms) | `(16000 − 400) / 160 + 1 = 98` frames exactly |
+| FFT size | **400, not 512** | librosa slices by FFT size; 512 gives 97 frames, not 98 |
+| Mel bands | 40 | Narrow at the bottom, wide at the top, like human hearing |
+| Scale | log (dB) | Hearing is logarithmic too |
+| Normalisation | fixed mean/scale from **training data only**, saved to `norm.json` | The app must reuse the identical numbers |
+
+`audio_utils.py` holds this code and **both** `train.py` and `app.py` import it.
+There is never a second copy. This is the defence against *training/serving
+skew*, the single most common silent bug in ML demos: if the app computed the
+picture even slightly differently, the model would see unfamiliar input and
+return confident nonsense with no error message.
+
+### 15.4 Augmentation — where most of the work actually went
+
+45 positive clips cannot train a network. Each training clip is copied many
+times with random alterations, turning 170 clips into 3,006:
+
+| Class | Copies each | Reason |
+|---|---|---|
+| Vektora | 32 | The rare class |
+| **Soft negatives** | **40** | See below — this is the most important number in the file |
+| Noise | 6 | Plentiful and easy |
+
+**Why soft negatives get the most copies of all.** With 6 copies each, the
+negative class came out roughly 85% synthetic noise, so nearly all of the
+model's effort went into "word versus hiss" — which is trivial — and almost
+none into "Vektora versus vector", which is the only distinction the demo is
+judged on. Raising it to 40 puts the training effort exactly on the boundary
+that matters. This single change took the look-alikes from *one firing at 0.76*
+to *none firing, highest 0.23*.
+
+Each copy gets a random subset of these, applied in this order:
+
+| Step | Setting | Why |
+|---|---|---|
+| **Speed perturbation** | p = 0.8, rate **0.9–1.15×** | Added after a live test: the detector caught "Vektora" spoken *loudly and slowly* and missed it at normal pace. All 63 recordings are careful, deliberate pronunciations; nothing else in the pipeline varies the *rate* of speech. Resampling shortens or lengthens the word and shifts pitch slightly — standard "speed perturbation" from speech recognition, one line of interpolation instead of a phase vocoder. |
+| Random EQ | p = 0.7, ±6 dB tilt, roll-off below 50–250 Hz and above 5.5–8 kHz | Pretends a different microphone, so the network cannot recognise the *recording chain* instead of the word |
+| Time shift | ±0.15 s | Live, the word will not sit where it sat in the recordings |
+| Gain | **−28 to +6 dB** | Widened from −20 dB after quiet live speech was missed |
+| Overdrive | p = 0.3, +3 to +12 dB | 86 of 90 real files are clipped. Clipping *every* class at random stops "clipped" becoming a clue for "Vektora" |
+| Background noise | p = 0.8, SNR 5–30 dB | Mixed from the training-split noise clips only, so nothing leaks from val/test |
+| SpecAugment | time mask ≤ 10 frames, band mask ≤ 5 bands | Blanks a strip of the picture so no single tiny detail can be depended on |
+
+**Why the speed range is 0.9–1.15 and not wider.** It was 0.82–1.28 for one
+run. That made the model so tolerant of duration and pitch that a fast
+"vector" started to look like a "Vektora" — measured live by the user as false
+activations. Narrowing it kept the pace tolerance and restored the boundary.
+
+Augmentation is applied to **training clips only**, never to validation or
+test. Applying it to test clips would inflate the score and mean nothing.
+
+### 15.5 The model
+
+```
+log-mel picture 98 × 40 × 1
+  → Conv2D 16 filters 3×3 → BatchNorm → ReLU → MaxPool 2   (98×40 → 49×20)
+  → Conv2D 32 filters 3×3 → BatchNorm → ReLU → MaxPool 2   (49×20 → 24×10)
+  → Conv2D 64 filters 3×3 → BatchNorm → ReLU
+  → GlobalAveragePooling2D        ("was each pattern anywhere?")
+  → Dropout 0.3
+  → Dense 1 → Sigmoid             → one score, 0..1 = P(Vektora)
+```
+
+**23,697 parameters.** The three blocks are a hierarchy: the first finds edges
+and stripes, the second finds pieces of sounds (the *k-t* burst, vowels), the
+third finds word-level combinations of those pieces.
+
+*Global average pooling* rather than flatten is deliberate: it averages each
+pattern detector over the whole picture, so the answer barely depends on
+**where** in the second the word sits — which is what a sliding window needs.
+
+Small is a feature, not a compromise: with 63 positives a larger network would
+memorise them, and ~24k parameters is small enough to eventually quantise to
+about 24 KB and run on an ESP32 (the original SIH26172 goal, §5 of `CLAUDE.md`).
+
+### 15.6 Training
+
+| Setting | Value |
+|---|---|
+| Loss | Binary cross-entropy (punishes *confident* wrong answers hardest) |
+| Optimizer | Adam, learning rate 0.001 |
+| Batch size | 32 |
+| Epochs | up to 60 — **stopped at 23**, best epoch **11** restored |
+| Early stopping | patience 12 on validation loss, `restore_best_weights=True` |
+| LR schedule | halve on plateau, patience 3, floor 1e-5 |
+| Class weights | Inversely proportional to class size, so the rarer class counts more |
+| Seed | 42 everywhere (NumPy and Keras), so runs are reproducible |
+| Runtime | ~1.5 minutes on this laptop's CPU |
+
+Best validation loss 0.047 with validation accuracy 1.000 at epoch 11.
+
+### 15.7 The threshold
+
+Chosen **on the validation set, after training, never on test**. The rule:
+sit just above the highest-scoring validation negative, giving zero false
+accepts on validation — unless that would miss more than 20% of validation
+keywords, in which case fall back to the best balance.
+
+Here the highest validation negative scored **0.17**, so the rule wanted 0.19,
+and the floor of 0.50 applied. Threshold = **0.50**.
+
+> **A correction worth recording, because it cost time on demo day:** the
+> earlier model's threshold of 0.73 was not a quality setting and **higher is
+> not better**. The threshold is a cutoff: raising it makes the detector fire
+> *less*. 0.73 on the current model would catch **zero** of the recorded live
+> keywords. 0.73 was simply where that older model's negatives happened to sit.
+
+### 15.8 The app
+
+`demo/app.py`, Streamlit. What happens on each recording:
+
+```
+browser mic → WAV bytes → peak-normalise the WHOLE recording
+  → slide a 1 s window every 0.1 s
+  → skip near-silent windows (below −45 dBFS) — a cheap voice-activity gate
+  → log-mel picture → normalise with the SAME saved numbers as training
+  → CNN → one score per window
+  → smooth over 7 windows (0.7 s) → take the best → compare with threshold
+```
+
+**Why smoothing over 0.7 s matters** (widened from 0.3 s on demo day): the page
+reports the **maximum** over roughly 30 sliding windows, which is thirty
+separate chances for one unlucky window to cross the line. "Vektora" takes
+about 0.7 s to say, so a genuine detection holds high confidence across that
+whole span while a look-alike produces a brief spike. Demanding a *sustained*
+peak is what makes taking the maximum trustworthy. It costs nothing on 1-second
+clips, where there is only one window.
+
+Three tabs: **🎙️ Try it** (record / example clips / upload, with verdict,
+waveform, spectrogram and confidence-over-time), **📊 How it was trained** (the
+five graphs with a sentence each), **🧠 How it works** (the pipeline and the
+honest limits). The "🎓 Teach it" recording tab was **removed on 2026-09-12**
+at the user's request.
+
+The example clips are held-out test clips bundled with the app, so the demo
+works even if the venue's microphone or browser permissions fail:
+
+| Example clip | Score |
+|---|---|
+| `vektora_project_mic_1/2/3.wav` | 0.91 / 0.93 / **1.00** |
+| `soft_negative_1/2/3.wav` | 0.03 / 0.23 / 0.16 |
+| `synthetic_noise_1.wav` | 0.25 |
+
+### 15.9 Tools, and the exact versions that work
+
+| Tool | Version | What it does here |
+|---|---|---|
+| Python | 3.10.7 (in `.venv/`) | Never the global interpreter — see `CLAUDE.md` §1 |
+| TensorFlow / Keras | **2.15.1** | The network and training. Do not upgrade to 2.16+: Keras 3 changes the `tf.lite` path |
+| NumPy | 1.26.4 | Audio and spectrograms are arrays |
+| librosa | 0.11.0 | Resampling, mel filterbank, word segmentation |
+| soundfile | 0.14.0 | Reading and writing WAV |
+| scikit-learn | 1.7.2 | Split helpers and metrics |
+| matplotlib | 3.10.9 | Every graph |
+| Streamlit | **1.60.0** | The web page; `st.audio_input` gives the record button |
+| protobuf | **4.25.9 — pinned** | Unpinned `streamlit` pulls protobuf 7, which breaks TF 2.15 (needs < 5) |
+| ffmpeg | system, from 2013 | Decoding m4a. No `-hide_banner`; must read from a **file**, not a pipe |
+| Hugging Face Spaces | Docker SDK, Streamlit template | Free CPU hosting (not yet deployed) |
+
+### 15.10 Everything that was tried and rejected — with the numbers
+
+Recorded so none of it is repeated. Each was measured, not guessed.
+
+| Experiment | Result | Verdict |
+|---|---|---|
+| **Room + browser-AGC simulation**, p = 0.6 / 0.5 | Live keyword fell to **1/6**; look-alikes already clean on files | Reverted |
+| Same, moderated to p = 0.35 / 0.3 | Live keyword **2/6**; one look-alike reached 0.50 | Reverted — kept behind `ROOM_AGC = False` |
+| Wide speed perturbation 0.82–1.28× | Live keyword 5/6, but live *talking* scored **1.00** and a look-alike 0.76 | Narrowed to 0.9–1.15 |
+| GitHub-only with no speed perturbation | Live keyword 3/6 (0.29–0.58); detected only when spoken slowly and loudly | Speed perturbation added |
+| Mixing browser-mic babble into positives at SNR 3–25 dB *(earlier session)* | **0/6** live keywords fired | Reverted |
+| "Loudness is the cue" hypothesis *(earlier session)* | Making held-out talking full-volume only lifted it to 0.33 | Disproved |
+
+**The pattern in all of it:** simulating a recording chain you have not
+measured costs more than it buys. Every attempt to *guess* at live browser
+audio made the keyword weaker. The fix is real recordings from the real
+microphone, which is a 90-second job whenever there is time.
+
+### 15.11 Reproducing this exact model
+
+From the repo root, always with the venv interpreter:
+
+```bash
+.venv/Scripts/python.exe demo/prepare_data.py          # ~15 s  → data/prepared.npz + 2 graphs
+.venv/Scripts/python.exe demo/train.py                 # ~90 s  → model/ + 3 graphs
+.venv/Scripts/python.exe -m streamlit run demo/app.py  # → http://localhost:8501
+```
+
+The switches that define this version, all at the top of their files:
+
+| Flag | File | Value |
+|---|---|---|
+| `GITHUB_ONLY` | `prepare_data.py` | `True` |
+| `GITHUB_ONLY` | `train.py` | `True` (must match) |
+| `POS_COPIES, NEG_COPIES` | `train.py` | `32, 6` |
+| `SOFT_COPIES` | `train.py` | `40` |
+| `ROOM_AGC` | `train.py` | `False` |
+| `smooth(..., n=)` | `app.py` | `7` |
+
+**Run exactly one Streamlit server**, and restart it after retraining. Three
+servers ran at once during the build; the oldest held port 8501 and served a
+cached old model, which looked exactly like "training didn't work" and cost an
+hour. `app.py` now keys its model cache on the file's timestamp, so a stale
+*model* cannot survive a retrain — but a stale *server* still serves stale
+code. Check with:
+
+```powershell
+Get-CimInstance Win32_Process -Filter "Name='python.exe'" |
+  Where-Object { $_.CommandLine -like '*streamlit*' } | Select ProcessId
+```
+
+Two earlier candidate models are kept for comparison and are git-ignored:
+`demo/model_backup_githubonly/` (before speed perturbation) and
+`demo/model_C_roomagc/` (the reverted room/AGC experiment). Swapping either
+into `demo/model/` takes ten seconds.
+
+### 15.12 What is in git
+
+Committed on demo day: `CLAUDE.md`, `CONTEXT.md`, `demo.md`, `.gitignore`, and
+all of `demo/` — code, plots, example clips, and the trained model
+force-added past the `*.keras` rule so this exact version is recoverable.
+
+Deliberately **not** committed: `demo/data/` (raw recordings),
+`Human speech/Humanspeech.m4a` (a private 3-minute personal recording — the
+GitHub repo is public), and the two scratch model folders.
+
+### 15.13 Presenting this version
+
+The safest order, given §15's limitation:
+
+1. **Example clips first** — real Vektora 0.91 / 0.93 / 1.00, look-alikes 0.03 /
+   0.23 / 0.16. This is the three-word story on clips the model never trained
+   on, with zero live-microphone risk.
+2. **Then say "Vektora" live** as the finale.
+3. **State the limitation yourself** rather than being caught by it: "It was
+   trained on 63 recordings of the word and 27 look-alikes, and no everyday
+   conversation — so it is sharp on the word and over-eager on free-form
+   speech. Adding conversation data is the next step." Saying it first is worth
+   more than hiding it.
+
+The number worth quoting: **62 of 63 keywords detected, 0 of 27 look-alike
+words falsely accepted, with nothing scoring between 0.25 and 0.65** — the
+decision is not a close call.
+
+---
