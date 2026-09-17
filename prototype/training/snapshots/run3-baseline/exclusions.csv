@@ -1,0 +1,15 @@
+folder,file,action,decided_by,date,reason
+positive,vektora_019.wav,exclude,user (listened),2026-09-17,audibly chopped (4 interior exact-zero gaps up to 197 ms)
+positive,vektora_020.wav,exclude,user (listened),2026-09-17,loud clipped/chopped - unusable
+positive,vektora_021.wav,exclude,user (listened),2026-09-17,loud clipped/chopped - unusable
+positive,vektora_022.wav,exclude,user (listened),2026-09-17,loud clipped/chopped - unusable
+positive,vektora_023.wav,exclude,user (listened),2026-09-17,loud clipped/chopped - unusable
+positive,vektora_024.wav,exclude,user (listened),2026-09-17,loud clipped/chopped - unusable
+positive,vektora_025.wav,exclude,user (listened),2026-09-17,loud clipped/chopped - unusable
+positive,vektora_026.wav,exclude,user (listened),2026-09-17,loud clipped/chopped - unusable
+positive,vektora_027.wav,exclude,user (listened),2026-09-17,loud clipped/chopped - unusable
+positive,vektora_028.wav,exclude,user (listened),2026-09-17,loud clipped/chopped - unusable
+positive,vektora_029.wav,exclude,user (listened),2026-09-17,loud clipped/chopped - unusable
+positive,vektora_030.wav,exclude,user (listened),2026-09-17,unusable - contains no useful keyword
+background_negative,noise_066.wav,exclude,user (listened),2026-09-17,audibly chopped (5 interior exact-zero gaps)
+background_negative,noise_067.wav,exclude,user (listened),2026-09-17,audibly chopped (5 interior exact-zero gaps)

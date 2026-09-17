@@ -28,3 +28,6 @@ Thumbs.db
 
 # Prototype: recordings (speaker voices, soak audio) -- never commit, repo is public
 prototype/data/
+
+# Frozen model snapshots ARE committed (rollback points)
+!prototype/training/snapshots/**/*.keras
