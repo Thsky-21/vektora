@@ -1,43 +1,44 @@
-# Repo root. The project is SIH26172-Vektora/ (it has its own .gitignore).
-# archive/ holds the pre-move tree, kept for history only.
+# Repo root .gitignore (the project tree used to live in SIH26172-Vektora/).
 
-# Python virtual environments (bare pattern matches at any depth)
+# --- re-include what the root .gitignore hides --------------------------------
+# The trained models ARE part of this release (training/model, snapshots,
+# the v0 Streamlit demo model).
+!*.keras
+!*.tflite
+
+# --- environments / build output ----------------------------------------------
 .venv/
 venv/
 __pycache__/
 *.py[cod]
-
-# Bulk audio datasets -- never commit these (Speech Commands alone is ~2.3 GB)
-speech_commands*/
-*.tar.gz
-*.zip
-
-# Server-side ASR model dumps (vosk-model-*, hundreds of MB)
-models/
-
-# Generated feature arrays
-*.npy
-*.npz
-
-# Trained models (regenerate from training scripts)
-*.keras
-*.h5
-*.tflite
-
-# Node
 node_modules/
-dist/
+console/dist/
+firmware/build/
+firmware/managed_components/
+firmware/sdkconfig
+firmware/sdkconfig.old
+extras/*/build/
+extras/*/managed_components/
+extras/*/sdkconfig
+extras/*/sdkconfig.old
+extras/recorder/firmware/build/
+extras/recorder/firmware/sdkconfig
 
-# OS / editor
+# --- secrets (CLAUDE.md Rule 7) ------------------------------------------------
+firmware/main/secrets.h
+
+# --- third-party model download (55 MB, Apache-2.0, see server/README.md) ------
+server/models/
+
+# --- live room recordings from the laptop-mic page -----------------------------
+# Whoever was in the room is on these. Their .jsonl logs are kept. Delete this
+# line if everyone recorded agreed to publish.
+sessions/*-mic*.wav
+
+# --- OS / editor ------------------------------------------------------------------
 .DS_Store
 Thumbs.db
-.claude/
 
-# --- archive/: private recordings and local-only copies, never commit ---------
-# (repo is public; these contain voices)
-archive/demo/data/
-archive/prototype/data/
-archive/Human speech/
-archive/sessions/
-# Frozen model snapshots ARE committed (rollback points)
-!archive/prototype/training/snapshots/**/*.keras
+# --- archive/: old pre-move tree, history only -----------------------------------
+# Already-tracked files stay tracked; nothing new (recordings, local copies) gets added.
+archive/

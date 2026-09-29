@@ -3,6 +3,13 @@
 Smart India Hackathon 2026 · ISRO · PS **SIH26172** "Low Latency and Efficient Voice Activator for Edge Devices" · Hardware.
 Idea-submission deadline: **30 Sep 2026**. Today is build day. Optimise for "measured and working" over "complete".
 
+> **2026-09-29 (latest): the tree was popped out of `SIH26172-Vektora/` to
+> the repo root.** Wherever this file says `SIH26172-Vektora/<x>`, read `<x>`
+> at the repo root. The old pre-move tree (`prototype/`, loose WAVs, the old
+> root CLAUDE.md) is in `archive/`, history only. The firmware build dir
+> `C:\Users\User\esp\vkc` still points at the old source path: build into a
+> fresh `-B` dir (or `idf.py fullclean`) before the next build.
+
 > **2026-09-28 — this file replaces the previous CLAUDE.md wholesale.** The
 > full narrative of every prior session (dataset audit, three training runs,
 > the 2026-09-18 hardware bring-up on the WROOM-32, the 2026-09-24 SIH
@@ -533,7 +540,7 @@ Paths in the older notes below (`prototype/firmware`, `C:\Users\User\esp\vkb`, `
 ### Build / flash / log commands (PowerShell)
 ```
 . C:\Users\User\esp\esp-idf-v5.5.5\export.ps1
-cd C:\Users\User\documents\vektora\SIH26172-Vektora\firmware
+cd C:\Users\User\documents\vektora\firmware
 copy main\secrets.example.h main\secrets.h     # once; fill in hotspot SSID/pass + VK_SERVER_IP 192.168.137.1
 idf.py -B C:\Users\User\esp\vkc\build -D SDKCONFIG=C:\Users\User\esp\vkc\sdkconfig build
 idf.py -B C:\Users\User\esp\vkc\build -D SDKCONFIG=C:\Users\User\esp\vkc\sdkconfig -p COM10 flash
