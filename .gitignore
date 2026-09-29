@@ -1,17 +1,19 @@
-# Python virtual environment
+# Repo root. The project is SIH26172-Vektora/ (it has its own .gitignore).
+# archive/ holds the pre-move tree, kept for history only.
+
+# Python virtual environments (bare pattern matches at any depth)
 .venv/
 venv/
 __pycache__/
 *.py[cod]
 
-# Bulk audio datasets -- never commit these.
-# Google Speech Commands alone is ~2.3 GB.
+# Bulk audio datasets -- never commit these (Speech Commands alone is ~2.3 GB)
 speech_commands*/
 *.tar.gz
 *.zip
 
-# Demo: raw recordings (includes private phone talking; this repo is public)
-demo/data/
+# Server-side ASR model dumps (vosk-model-*, hundreds of MB)
+models/
 
 # Generated feature arrays
 *.npy
@@ -22,12 +24,20 @@ demo/data/
 *.h5
 *.tflite
 
+# Node
+node_modules/
+dist/
+
 # OS / editor
 .DS_Store
 Thumbs.db
+.claude/
 
-# Prototype: recordings (speaker voices, soak audio) -- never commit, repo is public
-prototype/data/
-
+# --- archive/: private recordings and local-only copies, never commit ---------
+# (repo is public; these contain voices)
+archive/demo/data/
+archive/prototype/data/
+archive/Human speech/
+archive/sessions/
 # Frozen model snapshots ARE committed (rollback points)
-!prototype/training/snapshots/**/*.keras
+!archive/prototype/training/snapshots/**/*.keras
