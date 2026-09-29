@@ -1,0 +1,6 @@
+## Downloaded automatically by `idf.py build` into managed_components/.
+dependencies:
+  idf: ">=5.1"
+  # TensorFlow Lite Micro for ESP32, with esp-nn optimised int8 kernels.
+  # Pinned exactly so a rebuild months later gives the same binary.
+  espressif/esp-tflite-micro: "==1.4.0"

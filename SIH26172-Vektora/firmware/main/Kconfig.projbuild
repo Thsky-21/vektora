@@ -1,0 +1,66 @@
+menu "Vektora keyword spotter"
+
+    config VK_I2S_SCK_GPIO
+        int "INMP441 SCK (bit clock) GPIO"
+        default 26
+        help
+            Must match the board wiring. Unconfirmed default.
+
+    config VK_I2S_WS_GPIO
+        int "INMP441 WS (word select / LRCL) GPIO"
+        default 25
+
+    config VK_I2S_SD_GPIO
+        int "INMP441 SD (data out) GPIO"
+        default 33
+        help
+            Input only is fine (GPIO 34-39 work too).
+
+    config VK_I2S_RIGHT_CHANNEL
+        bool "INMP441 L/R pin is tied to VDD (right channel)"
+        default n
+        help
+            Leave off when L/R is tied to GND, which is the usual wiring.
+
+    config VK_SAMPLE_SHIFT
+        int "Right shift from 32-bit I2S sample to 16-bit"
+        range 8 20
+        default 16
+        help
+            The INMP441 sends 24-bit audio left-aligned in a 32-bit slot.
+            A shift of 16 keeps the top 16 bits (full scale = full scale).
+            A smaller shift adds 6 dB of gain per step. This MUST match the
+            conversion used when the training data was recorded, because the
+            model uses no volume normalisation. Compare the "level" printed
+            in the log with the training clips' level.
+
+    config VK_LED_GPIO
+        int "Detection LED GPIO (-1 = none)"
+        default 2
+        help
+            GPIO 2 is the blue on-board LED of the DevKit V1.
+
+    config VK_INFER_EVERY_FRAMES
+        int "Run the model every N 10 ms frames"
+        range 1 50
+        default 10
+        help
+            10 = every 100 ms, the same 0.1 s hop the tester UI uses.
+
+    config VK_REFRACTORY_MS
+        int "Ignore new detections for this long after one (ms)"
+        default 1500
+
+    config VK_LOG_SCORE_MIN
+        int "Log every inference whose P(keyword) is at least this (percent)"
+        range 0 100
+        default 20
+
+    config VK_ARENA_KB
+        int "TFLite Micro tensor arena (KB)"
+        default 160
+        help
+            Working memory for the model. The log prints how much was really
+            used; lower this to that plus some margin.
+
+endmenu

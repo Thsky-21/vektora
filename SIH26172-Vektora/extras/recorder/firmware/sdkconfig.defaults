@@ -1,0 +1,16 @@
+# Target is chosen with `idf.py set-target esp32s3` (or esp32), not here.
+CONFIG_ESP_MAIN_TASK_STACK_SIZE=6144
+
+# Boot messages stay on UART0 at 115200 (visible via the board's UART port
+# with `idf.py monitor`). They must NOT also go to the native USB port, which
+# carries the binary audio stream on the ESP32-S3.
+CONFIG_ESP_CONSOLE_UART_BAUDRATE=115200
+CONFIG_ESP_CONSOLE_SECONDARY_NONE=y
+
+# Recording-rig wiring (user, 2026-09-24), board = ESP32-S3:
+# INMP441 SCK=GPIO6, WS=GPIO5, SD=GPIO4, L/R->GND (left channel).
+# (On an ESP32-WROOM-32 GPIO6 would be the internal flash clock and unusable;
+# on the S3 it is an ordinary pin.)
+CONFIG_VKR_I2S_SD_GPIO=4
+CONFIG_VKR_I2S_WS_GPIO=5
+CONFIG_VKR_I2S_SCK_GPIO=6

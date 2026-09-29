@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vektora Live</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f6f9; --panel:#fff; --line:#e3e7ee; --ink:#14213d; --mute:#6b7689;
+  --navy:#0B2545; --saffron:#F28C28; --pass:#1a8f4c;
+  --mono:'JetBrains Mono',ui-monospace,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 Inter,system-ui,sans-serif;display:flex;flex-direction:column}
+
+header{background:var(--navy);color:#fff;padding:0 24px;height:52px;flex:none;display:flex;align-items:center;gap:14px}
+header h1{font-size:16px;font-weight:600;margin:0;white-space:nowrap}
+header .sub{opacity:.65;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+header .sp{flex:1}
+.status{display:flex;align-items:center;gap:8px;font:600 12px var(--mono);padding:6px 14px;border-radius:14px;background:rgba(255,255,255,.1);letter-spacing:.5px;white-space:nowrap}
+.status .dot{width:9px;height:9px;border-radius:50%;background:#8a94a6}
+.status.listen .dot{background:#4cc38a}
+.status.live{background:var(--saffron)}
+.status.live .dot{background:#fff;animation:pulse 1s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.25}}
+
+.sys{flex:none;display:flex;gap:14px;justify-content:center;padding:22px 24px 0;flex-wrap:wrap}
+.chip{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 20px;min-width:230px}
+.chip .name{font-weight:600;font-size:15px}
+.chip .on{margin-left:auto;display:flex;align-items:center;gap:6px;font:600 12px var(--mono);color:var(--pass)}
+.chip .on i{width:9px;height:9px;border-radius:50%;background:var(--pass);box-shadow:0 0 0 3px rgba(26,143,76,.15)}
+.link{align-self:center;color:#b5bdca;font-size:18px}
+.sys.flow .link{color:var(--saffron);animation:pulse .9s ease-in-out infinite}
+
+main{flex:1;min-height:0;display:flex;justify-content:center;padding:22px 24px 28px}
+.card{width:100%;max-width:1100px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 28px;display:flex;flex-direction:column;min-height:0}
+.card h2{margin:0 0 14px;font-size:12px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;color:var(--navy)}
+.now{flex:none;min-height:140px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.now .meta{font:12px var(--mono);color:var(--mute);margin-bottom:10px;display:flex;gap:10px;align-items:center}
+.now .text{font-size:34px;line-height:1.3;font-weight:500}
+.now .text.partial{color:#9aa3b2}
+.tag{font:600 11px var(--mono);padding:3px 8px;border-radius:4px;background:#eef1f5;color:var(--mute)}
+.tag.live{background:var(--saffron);color:#fff}
+.tag.done{background:#e6f4ec;color:var(--pass)}
+.hist{flex:1;min-height:0;overflow-y:auto;padding-top:8px}
+.utt{padding:10px 0;border-bottom:1px solid var(--line);display:flex;gap:16px;align-items:baseline}
+.utt:last-child{border-bottom:0}
+.utt .n{font:12px var(--mono);color:var(--mute);flex:none;width:90px;white-space:nowrap}
+.utt .t{font-size:17px}
+.kwd{color:var(--saffron);font-weight:700}
+.empty{color:var(--mute)}
+</style>
+</head>
+<body>
+<header>
+  <h1>SIH26172 · ISRO · Vektora</h1>
+  <span class="sub">Low-latency edge voice activator · laptop mic prototype</span>
+  <span class="sp"></span>
+  <span class="status" id="status"><span class="dot"></span><span id="statusTxt">READY</span></span>
+</header>
+
+<div class="sys" id="sys">
+  <div class="chip"><span class="name">Hardware</span><span class="on"><i></i>ON</span></div>
+  <span class="link">→</span>
+  <div class="chip"><span class="name">Vosk ASR</span><span class="on"><i></i>ON</span></div>
+</div>
+
+<main>
+  <section class="card">
+    <h2>Live transcript</h2>
+    <div class="now" id="now"><div class="meta"><span class="tag">IDLE</span></div><div class="text empty">Waiting for speech…</div></div>
+    <div class="hist" id="hist"></div>
+  </section>
+</main>
+
+<script>
+const $ = id => document.getElementById(id);
+const ACTIVE = ["DETECTED","LINKING","STREAMING"];
+let ws, ctx, node, stream, running = false, starting = false, blocked = false;
+let tick = null, sessions = [];
+
+// ---------- audio: mic -> 16 kHz PCM16, 20 ms frames -> /ws/mic ----------
+const WORKLET = `
+class Pcm extends AudioWorkletProcessor{
+  constructor(){super();this.r=sampleRate/16000;this.a=0;this.b=new Int16Array(320);this.i=0;}
+  process(ins){const c=ins[0]&&ins[0][0];if(!c)return true;
+    for(let k=0;k<c.length;k++){this.a+=1;if(this.a<this.r)continue;this.a-=this.r;
+      let v=Math.max(-1,Math.min(1,c[k]));this.b[this.i++]=v<0?v*32768:v*32767;
+      if(this.i===320){this.port.postMessage(this.b.buffer,[this.b.buffer]);this.b=new Int16Array(320);this.i=0;}}
+    return true;}}
+registerProcessor('pcm',Pcm);`;
+
+async function start(){
+  if(starting) return; starting = true;
+  try{
+    stream = await navigator.mediaDevices.getUserMedia({audio:{channelCount:1,echoCancellation:false,noiseSuppression:true,autoGainControl:true}});
+  }catch(e){ blocked = true; starting = false; render(); return; }
+  blocked = false;
+  try{ ctx = new AudioContext({sampleRate:16000}); }catch(e){ ctx = new AudioContext(); }
+  await ctx.audioWorklet.addModule(URL.createObjectURL(new Blob([WORKLET],{type:"application/javascript"})));
+  node = new AudioWorkletNode(ctx,"pcm");
+  ctx.createMediaStreamSource(stream).connect(node);
+  ws = new WebSocket((location.protocol==="https:"?"wss://":"ws://")+location.host+"/ws/mic");
+  ws.binaryType = "arraybuffer";
+  ws.onclose = ()=>{ if(running) stop(); };
+  ws.onmessage = m => onEvent(JSON.parse(m.data));
+  node.port.onmessage = e => { if(ws.readyState===1) ws.send(e.data); };
+  running = true; starting = false;
+}
+function stop(){
+  running = false;
+  try{ node && node.disconnect(); ctx && ctx.close(); }catch(e){}
+  stream && stream.getTracks().forEach(t=>t.stop());
+  ws && ws.readyState<2 && ws.close();
+  tick = null; render();
+}
+function toggleTx(){
+  if(!ws || ws.readyState!==1) return;
+  ws.send(JSON.stringify({cmd: tick && ACTIVE.includes(tick.state) ? "end" : "wake"}));
+}
+document.addEventListener("keydown", async e=>{
+  if(e.code!=="Space" || e.repeat) return;
+  e.preventDefault();
+  if(!running){
+    if(starting) return;
+    await start(); if(!running) return;
+    const w=setInterval(()=>{ if(ws&&ws.readyState===1){clearInterval(w); toggleTx();} },50);
+    return;
+  }
+  toggleTx();
+});
+
+// ---------- events ----------
+function onEvent(ev){
+  switch(ev.type){
+    case "tick": tick = ev; render(); break;
+    case "state": if(tick){ tick.state = ev.state; render(); } break;
+    case "detect":
+      sessions.unshift({n:ev.wake, session:ev.session, manual:ev.manual, wall:new Date(), partial:"", final:null});
+      renderTx(); break;
+    case "asr_partial": { const s=find(ev.session); if(!s) break;
+      s.partial = s.manual ? ev.text_raw : ev.text; renderTx(); break; }
+    case "asr_final": { const s=find(ev.session); if(!s) break;
+      s.final = s.manual ? ev.text_raw : ev.text; renderTx(); break; }
+  }
+}
+const find = id => sessions.find(s=>s.session===id);
+
+// ---------- rendering ----------
+const esc = s => s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const hl = s => esc(s||"").replace(/\bVektora\b/g,'<span class="kwd">Vektora</span>');
+
+function render(){
+  const active = !!tick && ACTIVE.includes(tick.state);
+  $("sys").classList.toggle("flow", active);
+  $("status").className = "status"+(active?" live": running?" listen":"");
+  $("statusTxt").textContent = active ? "TRANSCRIBING" : running ? "LISTENING" : blocked ? "MIC BLOCKED" : "READY";
+}
+function renderTx(){
+  if(!sessions.length) return;
+  const s = sessions[0], done = s.final!=null, txt = done ? s.final : s.partial;
+  $("now").innerHTML = `<div class="meta"><span class="tag ${done?"done":"live"}">${done?"FINAL":"LIVE"}</span>
+      session #${s.n} · ${s.wall.toLocaleTimeString()}</div>
+    <div class="text ${done?"":"partial"}">${txt ? hl(txt) : '<span class="empty">listening…</span>'}</div>`;
+  $("hist").innerHTML = sessions.slice(1,30).map(h=>`<div class="utt"><span class="n">#${h.n} · ${h.wall.toLocaleTimeString([], {hour:"2-digit",minute:"2-digit"})}</span>
+    <span class="t">${hl(h.final!=null ? h.final : h.partial) || '<span class="empty">—</span>'}</span></div>`).join("");
+}
+render();
+</script>
+</body>
+</html>

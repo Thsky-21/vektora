@@ -1,0 +1,58 @@
+menu "Vektora recorder"
+
+    config VKR_I2S_SCK_GPIO
+        int "INMP441 SCK (bit clock) GPIO"
+        default 6
+        help
+            ESP32-S3: GPIO 6 is fine. Plain ESP32 (WROOM-32): never use
+            GPIO 6-11, they are the internal SPI flash bus.
+
+    config VKR_I2S_WS_GPIO
+        int "INMP441 WS (word select / LRCL) GPIO"
+        default 5
+
+    config VKR_I2S_SD_GPIO
+        int "INMP441 SD (data out) GPIO"
+        default 4
+
+    config VKR_I2S_RIGHT_CHANNEL
+        bool "INMP441 L/R pin is tied to VDD (right channel)"
+        default n
+
+    config VKR_SAMPLE_SHIFT
+        int "Right shift from 32-bit I2S sample to 16-bit"
+        range 8 20
+        default 16
+        help
+            MUST equal CONFIG_VK_SAMPLE_SHIFT in the keyword-spotter
+            firmware, so the recordings have exactly the level the model
+            will hear on the device. The value is sent in every packet and
+            written into the recording log by record.py.
+
+    config VKR_USE_USB_JTAG
+        bool "Stream over the chip's native USB port (USB-Serial-JTAG)"
+        depends on SOC_USB_SERIAL_JTAG_SUPPORTED
+        default y
+        help
+            ESP32-S3 / C3 / C6: the board's "USB" connector. Turn off to
+            stream over UART0 instead (the board's "UART" connector, via its
+            USB-to-UART bridge). The plain ESP32 has no native USB, so it
+            always uses UART0.
+
+    config VKR_BAUD
+        int "UART0 baud rate for the audio stream"
+        default 921600
+        help
+            Only used when streaming over UART0. 16 kHz x 16 bit = 32 kB/s of audio plus ~6% framing. 921600 baud
+            carries ~92 kB/s, so there is almost 3x headroom.
+
+    config VKR_LED_GPIO
+        int "Heartbeat LED GPIO (-1 = none)"
+        default -1
+        help
+            Off by default. On an ESP32 DevKit V1, 2 is the blue on-board LED
+            (blinks once per second while streaming). ESP32-S3 DevKits have an
+            addressable RGB LED instead, which a plain GPIO cannot drive. Do NOT use GPIO 4 here: it is the mic's SD
+            line on this rig.
+
+endmenu

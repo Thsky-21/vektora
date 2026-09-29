@@ -1,0 +1,153 @@
+path,source,true,pred,p_keyword,p_other,p_noise
+vektora_180.wav,positive,keyword,keyword,0.4161,0.3951,0.1888
+vektora_181.wav,positive,keyword,other,0.3154,0.6484,0.0362
+vektora_182.wav,positive,keyword,other,0.2594,0.6961,0.0445
+vektora_183.wav,positive,keyword,keyword,0.7812,0.2124,0.0064
+vektora_184.wav,positive,keyword,keyword,0.4959,0.3405,0.1636
+vektora_185.wav,positive,keyword,keyword,0.5913,0.3514,0.0573
+vektora_186.wav,positive,keyword,keyword,0.6886,0.2783,0.0331
+vektora_187.wav,positive,keyword,keyword,0.6171,0.2631,0.1198
+vektora_188.wav,positive,keyword,other,0.3953,0.559,0.0457
+vektora_189.wav,positive,keyword,keyword,0.6584,0.3297,0.0119
+vektora_150.wav,positive,keyword,keyword,0.522,0.462,0.0161
+vektora_151.wav,positive,keyword,other,0.479,0.5202,0.0008
+vektora_152.wav,positive,keyword,other,0.4194,0.5647,0.0159
+vektora_153.wav,positive,keyword,keyword,0.8255,0.1744,1e-04
+vektora_154.wav,positive,keyword,keyword,0.8039,0.1949,0.0011
+vektora_155.wav,positive,keyword,keyword,0.842,0.1579,1e-04
+vektora_157.wav,positive,keyword,keyword,0.856,0.144,0.0
+vektora_158.wav,positive,keyword,keyword,0.8505,0.1494,0.0002
+vektora_159.wav,positive,keyword,keyword,0.9075,0.0919,0.0005
+hard_neg_ (30).wav,hard,other,other,0.1202,0.8024,0.0775
+hard_neg_ (31).wav,hard,other,other,0.3003,0.5879,0.1118
+hard_neg_ (32).wav,hard,other,other,0.3156,0.5999,0.0845
+hard_neg_ (33).wav,hard,other,other,0.1822,0.5502,0.2676
+hard_neg_ (34).wav,hard,other,other,0.1095,0.7502,0.1402
+hard_neg_ (35).wav,hard,other,other,0.1427,0.7243,0.133
+hard_neg_ (36).wav,hard,other,other,0.1512,0.5664,0.2824
+hard_neg_ (37).wav,hard,other,other,0.0719,0.5412,0.3869
+hard_neg_ (38).wav,hard,other,other,0.4652,0.5217,0.0131
+hard_neg_ (39).wav,hard,other,other,0.3125,0.677,0.0104
+hard_neg_ (90).wav,hard,other,other,0.1291,0.7253,0.1456
+hard_neg_ (91).wav,hard,other,other,0.2756,0.7099,0.0145
+hard_neg_ (92).wav,hard,other,keyword,0.548,0.4429,0.0091
+hard_neg_ (93).wav,hard,other,other,0.1981,0.6742,0.1277
+hard_neg_ (94).wav,hard,other,other,0.2741,0.7045,0.0215
+hard_neg_ (95).wav,hard,other,other,0.1926,0.7421,0.0653
+hard_neg_ (96).wav,hard,other,other,0.276,0.6808,0.0432
+hard_neg_ (97).wav,hard,other,other,0.0745,0.7571,0.1684
+hard_neg_ (98).wav,hard,other,other,0.1689,0.8206,0.0105
+hard_neg_ (99).wav,hard,other,other,0.154,0.7277,0.1184
+gsc_house_dce05676_nohash_0.wav,gsc,other,other,0.0684,0.9316,0.0
+gsc_nine_b5552931_nohash_1.wav,gsc,other,other,0.2522,0.7477,1e-04
+gsc_cat_380abbad_nohash_0.wav,gsc,other,other,0.157,0.792,0.051
+gsc_bed_708a9569_nohash_0.wav,gsc,other,other,0.0916,0.9076,0.0008
+gsc_eight_ad6a46f1_nohash_0.wav,gsc,other,other,0.0875,0.8848,0.0277
+gsc_five_7b301939_nohash_1.wav,gsc,other,other,0.3499,0.6493,0.0007
+gsc_five_b55a09be_nohash_0.wav,gsc,other,other,0.1637,0.8335,0.0029
+gsc_on_257e17e0_nohash_0.wav,gsc,other,other,0.1358,0.864,0.0003
+gsc_house_645ed69d_nohash_0.wav,gsc,other,other,0.1982,0.8012,0.0005
+gsc_cat_1a4259c3_nohash_0.wav,gsc,other,keyword,0.6946,0.2944,0.0109
+gsc_follow_66e8a4ec_nohash_0.wav,gsc,other,other,0.1802,0.8194,0.0004
+gsc_learn_31f01a8d_nohash_0.wav,gsc,other,other,0.1619,0.8381,0.0
+gsc_four_fb8c31a9_nohash_1.wav,gsc,other,other,0.1678,0.8319,0.0003
+gsc_yes_e53139ad_nohash_2.wav,gsc,other,other,0.153,0.8468,0.0002
+gsc_down_dfb6450b_nohash_0.wav,gsc,other,other,0.0535,0.9464,1e-04
+gsc_bird_70b0ccf4_nohash_0.wav,gsc,other,other,0.136,0.8638,1e-04
+gsc_dog_97101ef3_nohash_0.wav,gsc,other,other,0.3585,0.6413,0.0002
+gsc_four_cf8d91cf_nohash_0.wav,gsc,other,other,0.179,0.8207,0.0003
+gsc_happy_c50225fa_nohash_1.wav,gsc,other,other,0.326,0.674,0.0
+gsc_down_686d030b_nohash_2.wav,gsc,other,other,0.09,0.91,0.0
+gsc_bird_e63b69c5_nohash_1.wav,gsc,other,other,0.0539,0.9461,0.0
+gsc_go_af6fbbf5_nohash_2.wav,gsc,other,other,0.024,0.9758,1e-04
+gsc_nine_20fd451f_nohash_0.wav,gsc,other,other,0.3239,0.6761,0.0
+gsc_learn_b5cf6ea8_nohash_1.wav,gsc,other,other,0.2959,0.704,0.0
+gsc_four_a77fbcfd_nohash_3.wav,gsc,other,other,0.0902,0.9098,0.0
+gsc_marvin_f3957e23_nohash_0.wav,gsc,other,other,0.1362,0.8638,0.0
+gsc_cat_a3502f15_nohash_0.wav,gsc,other,other,0.3354,0.6645,1e-04
+gsc_stop_6c968bd9_nohash_1.wav,gsc,other,other,0.1751,0.8249,0.0
+gsc_dog_74551073_nohash_1.wav,gsc,other,keyword,0.8587,0.101,0.0403
+gsc_bird_d926bb17_nohash_0.wav,gsc,other,other,0.1071,0.8914,0.0015
+gsc_eight_4c6167ca_nohash_5.wav,gsc,other,other,0.0719,0.9274,0.0007
+gsc_bed_0b56bcfe_nohash_0.wav,gsc,other,other,0.2303,0.7697,1e-04
+gsc_forward_30060aba_nohash_2.wav,gsc,other,other,0.0577,0.9423,0.0
+gsc_marvin_d486fb84_nohash_1.wav,gsc,other,other,0.2811,0.7189,0.0
+gsc_sheila_efab2cbd_nohash_0.wav,gsc,other,other,0.3077,0.674,0.0183
+gsc_four_9a356ab9_nohash_0.wav,gsc,other,other,0.0864,0.9134,0.0002
+generic_neg_040.wav,generic,other,other,0.2487,0.7369,0.0145
+generic_neg_041.wav,generic,other,other,0.3603,0.6369,0.0028
+generic_neg_042.wav,generic,other,other,0.2055,0.7851,0.0094
+generic_neg_043.wav,generic,other,other,0.3952,0.6038,0.001
+generic_neg_044.wav,generic,other,other,0.176,0.8212,0.0029
+generic_neg_045.wav,generic,other,other,0.4294,0.5671,0.0035
+generic_neg_046.wav,generic,other,other,0.2207,0.7749,0.0044
+generic_neg_047.wav,generic,other,other,0.3165,0.5726,0.1109
+generic_neg_048.wav,generic,other,other,0.2338,0.7567,0.0096
+generic_neg_049.wav,generic,other,other,0.1745,0.7115,0.114
+generic_neg_070.wav,generic,other,other,0.3868,0.6115,0.0017
+generic_neg_071.wav,generic,other,other,0.2592,0.7287,0.0122
+generic_neg_072.wav,generic,other,keyword,0.5752,0.4227,0.0021
+generic_neg_073.wav,generic,other,other,0.2901,0.6878,0.0222
+generic_neg_074.wav,generic,other,other,0.3791,0.6189,0.002
+generic_neg_075.wav,generic,other,other,0.2558,0.7244,0.0198
+generic_neg_076.wav,generic,other,other,0.3906,0.6084,0.001
+generic_neg_077.wav,generic,other,other,0.21,0.7488,0.0412
+generic_neg_078.wav,generic,other,other,0.1935,0.7964,0.0101
+generic_neg_079.wav,generic,other,other,0.261,0.7136,0.0253
+noise_060.wav,noise,noise,noise,0.1589,0.1173,0.7238
+noise_061.wav,noise,noise,noise,0.2481,0.0582,0.6936
+noise_062.wav,noise,noise,noise,0.0473,0.1716,0.7811
+noise_063.wav,noise,noise,noise,0.0811,0.2271,0.6918
+noise_064.wav,noise,noise,noise,0.1496,0.1974,0.653
+noise_065.wav,noise,noise,noise,0.2596,0.0617,0.6788
+noise_068.wav,noise,noise,keyword,0.7299,0.141,0.1291
+noise_069.wav,noise,noise,noise,0.1324,0.1428,0.7248
+noise_090.wav,noise,noise,noise,0.0113,0.038,0.9507
+noise_091.wav,noise,noise,noise,0.0257,0.1878,0.7865
+noise_092.wav,noise,noise,noise,0.0288,0.0913,0.8799
+noise_093.wav,noise,noise,noise,0.0321,0.3023,0.6656
+noise_094.wav,noise,noise,noise,0.0277,0.1909,0.7815
+noise_095.wav,noise,noise,noise,0.0619,0.382,0.5561
+noise_096.wav,noise,noise,noise,0.0219,0.1747,0.8034
+noise_097.wav,noise,noise,noise,0.0215,0.1316,0.8469
+noise_098.wav,noise,noise,noise,0.0112,0.1036,0.8852
+noise_099.wav,noise,noise,noise,0.0292,0.209,0.7619
+vektora_positive0070.wav,akash_pos,keyword,keyword,0.9605,0.0395,0.0
+vektora_positive0071.wav,akash_pos,keyword,keyword,0.9731,0.0269,0.0
+vektora_positive0072.wav,akash_pos,keyword,keyword,0.7998,0.2001,1e-04
+vektora_positive0073.wav,akash_pos,keyword,keyword,0.511,0.4889,1e-04
+vektora_positive0074.wav,akash_pos,keyword,keyword,0.8529,0.1471,0.0
+vektora_positive0075.wav,akash_pos,keyword,keyword,0.966,0.034,0.0
+vektora_positive0076.wav,akash_pos,keyword,keyword,0.9531,0.0469,0.0
+vektora_positive0077.wav,akash_pos,keyword,keyword,0.9589,0.0411,0.0
+vektora_positive0078.wav,akash_pos,keyword,keyword,0.7922,0.2076,0.0002
+vektora_positive0079.wav,akash_pos,keyword,keyword,0.9654,0.0346,0.0
+vektora_positive0000.wav,akash_pos,keyword,keyword,0.5007,0.4976,0.0017
+vektora_positive0001.wav,akash_pos,keyword,other,0.4714,0.5249,0.0037
+vektora_positive0002.wav,akash_pos,keyword,noise,0.0507,0.0323,0.9171
+vektora_positive0003.wav,akash_pos,keyword,other,0.3964,0.594,0.0096
+vektora_positive0004.wav,akash_pos,keyword,other,0.3063,0.6767,0.017
+vektora_positive0005.wav,akash_pos,keyword,other,0.193,0.771,0.036
+vektora_positive0006.wav,akash_pos,keyword,keyword,0.774,0.226,0.0
+vektora_positive0007.wav,akash_pos,keyword,keyword,0.6832,0.3168,0.0
+vektora_positive0008.wav,akash_pos,keyword,keyword,0.6778,0.3222,0.0
+vektora_positive0009.wav,akash_pos,keyword,keyword,0.6818,0.3182,0.0
+vektora_negative0020.wav,akash_neg,other,keyword,0.6431,0.3557,0.0012
+vektora_negative0021.wav,akash_neg,other,keyword,0.7828,0.2172,0.0
+vektora_negative0022.wav,akash_neg,other,keyword,0.5012,0.4987,0.0
+vektora_negative0023.wav,akash_neg,other,other,0.4481,0.5519,0.0
+vektora_negative0024.wav,akash_neg,other,other,0.1686,0.8314,0.0
+vektora_negative0025.wav,akash_neg,other,keyword,0.877,0.1229,0.0002
+vektora_negative0026.wav,akash_neg,other,other,0.3649,0.6344,0.0007
+vektora_negative0027.wav,akash_neg,other,other,0.4154,0.5841,0.0005
+vektora_negative0028.wav,akash_neg,other,keyword,0.6802,0.3195,0.0003
+vektora_negative0029.wav,akash_neg,other,keyword,0.56,0.4399,0.0
+vektora_negative0070.wav,akash_neg,other,other,0.379,0.6188,0.0022
+vektora_negative0071.wav,akash_neg,other,other,0.1985,0.801,0.0005
+vektora_negative0073.wav,akash_neg,other,other,0.4629,0.5353,0.0018
+vektora_negative0074.wav,akash_neg,other,other,0.2537,0.7461,0.0002
+vektora_negative0075.wav,akash_neg,other,keyword,0.5692,0.4308,0.0
+vektora_negative0076.wav,akash_neg,other,other,0.412,0.5877,0.0003
+vektora_negative0077.wav,akash_neg,other,other,0.4466,0.5533,1e-04
+vektora_negative0078.wav,akash_neg,other,other,0.292,0.7017,0.0063
+vektora_negative0079.wav,akash_neg,other,other,0.2938,0.7049,0.0013

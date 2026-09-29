@@ -1,0 +1,34 @@
+{"type": "session_start", "transport": "udp", "addr": "127.0.0.1:58125", "dev_session": 39460, "t_mono_us": 816483683237, "wall": "2026-09-28T22:17:30.246", "session": "20260928-221730-udp39460"}
+{"type": "server_rx_first", "t_rx_us": 816483682282, "ptype": 1, "t_mono_us": 816483683803, "wall": "2026-09-28T22:17:30.247", "session": "20260928-221730-udp39460"}
+{"type": "hello", "score": 0.97, "t_win_end_us": 816488646904, "t_detect_us": 816488681904, "t_sock_us": 816488681906, "wifi_ms": 0, "fw": "test_sender", "cfg": "-", "codec": "pcm16", "t_mono_us": 816483683856, "wall": "2026-09-28T22:17:30.247", "session": "20260928-221730-udp39460"}
+{"type": "clock_sync", "rtt_us": 5051, "offset_us": -4997622, "error_bound_us": 2525, "t_mono_us": 816483712650, "wall": "2026-09-28T22:17:30.275", "session": "20260928-221730-udp39460"}
+{"type": "latency", "partial": true, "L1_ms": 35.0, "L2_ms": 0.0, "L3_ms": -2.0, "L3_error_ms": 2.53, "total_ms": 33.0, "t_mono_us": 816483712721, "wall": "2026-09-28T22:17:30.275", "session": "20260928-221730-udp39460"}
+{"type": "clock_sync", "rtt_us": 261, "offset_us": -4999972, "error_bound_us": 130, "t_mono_us": 816483747734, "wall": "2026-09-28T22:17:30.310", "session": "20260928-221730-udp39460"}
+{"type": "latency", "partial": true, "L1_ms": 35.0, "L2_ms": 0.0, "L3_ms": 0.35, "L3_error_ms": 0.13, "total_ms": 35.35, "t_mono_us": 816483747804, "wall": "2026-09-28T22:17:30.310", "session": "20260928-221730-udp39460"}
+{"type": "pkt_loss", "from_seq": 4, "count": 1, "t_mono_us": 816483747828, "wall": "2026-09-28T22:17:30.310", "session": "20260928-221730-udp39460"}
+{"type": "pkt_loss", "from_seq": 12, "count": 1, "t_mono_us": 816483787799, "wall": "2026-09-28T22:17:30.351", "session": "20260928-221730-udp39460"}
+{"type": "pkt_loss", "from_seq": 56, "count": 1, "t_mono_us": 816484163330, "wall": "2026-09-28T22:17:30.726", "session": "20260928-221730-udp39460"}
+{"type": "pkt_loss", "from_seq": 72, "count": 1, "t_mono_us": 816484483286, "wall": "2026-09-28T22:17:31.045", "session": "20260928-221730-udp39460"}
+{"type": "pkt_loss", "from_seq": 98, "count": 1, "t_mono_us": 816485035111, "wall": "2026-09-28T22:17:31.598", "session": "20260928-221730-udp39460"}
+{"type": "asr_partial", "text": "once you", "audio_ms": 2300, "first": true, "t_mono_us": 816485337861, "wall": "2026-09-28T22:17:31.901", "session": "20260928-221730-udp39460"}
+{"type": "pkt_loss", "from_seq": 119, "count": 1, "t_mono_us": 816485443025, "wall": "2026-09-28T22:17:32.005", "session": "20260928-221730-udp39460"}
+{"type": "pkt_loss", "from_seq": 126, "count": 1, "t_mono_us": 816485583273, "wall": "2026-09-28T22:17:32.145", "session": "20260928-221730-udp39460"}
+{"type": "asr_partial", "text": "once you reach", "audio_ms": 2600, "t_mono_us": 816485650262, "wall": "2026-09-28T22:17:32.213", "session": "20260928-221730-udp39460"}
+{"type": "asr_partial", "text": "one two three four", "audio_ms": 2800, "t_mono_us": 816485795873, "wall": "2026-09-28T22:17:32.359", "session": "20260928-221730-udp39460"}
+{"type": "asr_partial", "text": "one two three four five", "audio_ms": 3000, "t_mono_us": 816486001005, "wall": "2026-09-28T22:17:32.564", "session": "20260928-221730-udp39460"}
+{"type": "pkt_loss", "from_seq": 165, "count": 1, "t_mono_us": 816486343106, "wall": "2026-09-28T22:17:32.905", "session": "20260928-221730-udp39460"}
+{"type": "pkt_loss", "from_seq": 173, "count": 1, "t_mono_us": 816486524027, "wall": "2026-09-28T22:17:33.086", "session": "20260928-221730-udp39460"}
+{"type": "pkt_loss", "from_seq": 186, "count": 1, "t_mono_us": 816486762980, "wall": "2026-09-28T22:17:33.326", "session": "20260928-221730-udp39460"}
+{"type": "pkt_loss", "from_seq": 206, "count": 1, "t_mono_us": 816487182665, "wall": "2026-09-28T22:17:33.745", "session": "20260928-221730-udp39460"}
+{"type": "pkt_loss", "from_seq": 212, "count": 1, "t_mono_us": 816487302735, "wall": "2026-09-28T22:17:33.865", "session": "20260928-221730-udp39460"}
+{"type": "asr_partial", "text": "one two three four five open", "audio_ms": 4500, "t_mono_us": 816487518262, "wall": "2026-09-28T22:17:34.081", "session": "20260928-221730-udp39460"}
+{"type": "asr_partial", "text": "one two three four five open the", "audio_ms": 4700, "t_mono_us": 816487712129, "wall": "2026-09-28T22:17:34.275", "session": "20260928-221730-udp39460"}
+{"type": "pkt_loss", "from_seq": 250, "count": 1, "t_mono_us": 816488042959, "wall": "2026-09-28T22:17:34.606", "session": "20260928-221730-udp39460"}
+{"type": "asr_partial", "text": "one two three four five open the work", "audio_ms": 5000, "t_mono_us": 816488044278, "wall": "2026-09-28T22:17:34.607", "session": "20260928-221730-udp39460"}
+{"type": "pkt_loss", "from_seq": 254, "count": 1, "t_mono_us": 816488122909, "wall": "2026-09-28T22:17:34.685", "session": "20260928-221730-udp39460"}
+{"type": "asr_partial", "text": "one two three four five open the log fire", "audio_ms": 5200, "t_mono_us": 816488203662, "wall": "2026-09-28T22:17:34.767", "session": "20260928-221730-udp39460"}
+{"type": "asr_partial", "text": "one two three four five open the log file", "audio_ms": 5400, "t_mono_us": 816488393764, "wall": "2026-09-28T22:17:34.957", "session": "20260928-221730-udp39460"}
+{"type": "clock_sync", "rtt_us": 248, "offset_us": -4999975, "error_bound_us": 124, "t_mono_us": 816488583775, "wall": "2026-09-28T22:17:35.146", "session": "20260928-221730-udp39460"}
+{"type": "latency", "partial": true, "L1_ms": 35.0, "L2_ms": 0.0, "L3_ms": 0.35, "L3_error_ms": 0.12, "L4_ms": 1650.71, "total_ms": 35.35, "keyword_end_to_first_text_ms": 1690.93, "t_mono_us": 816488584038, "wall": "2026-09-28T22:17:35.146", "session": "20260928-221730-udp39460"}
+{"type": "asr_final", "text": "once you three four or five open the log file", "final_after_last_audio_ms": 30.9, "audio_ms": 5580, "rtf": 0.156, "t_mono_us": 816488615321, "wall": "2026-09-28T22:17:35.178", "session": "20260928-221730-udp39460"}
+{"type": "session_end", "reason": "end", "text": "once you three four or five open the log file", "packets": 265, "lost": 14, "late": 0, "end_to_final_ms": 31.5, "device_stats": null, "latency": {"L1_ms": 35.0, "L2_ms": 0.0, "L3_ms": 0.35, "L3_error_ms": 0.12, "L4_ms": 1650.71, "total_ms": 35.35, "keyword_end_to_first_text_ms": 1690.93}, "t_mono_us": 816488615943, "wall": "2026-09-28T22:17:35.178", "session": "20260928-221730-udp39460"}

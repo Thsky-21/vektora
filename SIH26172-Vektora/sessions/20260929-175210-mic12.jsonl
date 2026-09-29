@@ -1,0 +1,5 @@
+{"type": "detect", "wake": 4, "manual": true, "heard": "manual", "t_win_end_us": 30391589694, "t_detect_us": 30391610157, "l1_ms": null, "t_mono_us": 30391610278, "wall": "2026-09-29T17:52:10.713", "session": "20260929-175210-mic12"}
+{"type": "link", "link_host_ms": 3.4, "l2_host_ms": 4.1, "preroll_ms": 250, "t_mono_us": 30391614495, "wall": "2026-09-29T17:52:10.717", "session": "20260929-175210-mic12"}
+{"type": "stream_end", "reason": "key", "audio_ms": 610, "t_mono_us": 30392024040, "wall": "2026-09-29T17:52:11.127", "session": "20260929-175210-mic12"}
+{"type": "asr_final", "text": "Vektora and", "text_raw": "and", "kw": {"mode": "prepend", "replaced": []}, "decode_lag_median_ms": null, "decode_lag_p90_ms": null, "final_after_last_audio_ms": 558.1, "audio_ms": 670, "rtf": 1.459, "t_mono_us": 30392919907, "wall": "2026-09-29T17:52:12.022", "session": "20260929-175210-mic12"}
+{"type": "final_ready", "final_after_end_ms": 896.1, "t_mono_us": 30392920101, "wall": "2026-09-29T17:52:12.026", "session": "20260929-175210-mic12"}

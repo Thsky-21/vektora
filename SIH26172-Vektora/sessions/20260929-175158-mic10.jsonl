@@ -1,0 +1,8 @@
+{"type": "detect", "wake": 2, "manual": true, "heard": "manual", "t_win_end_us": 30379030038, "t_detect_us": 30379045621, "l1_ms": null, "t_mono_us": 30379046307, "wall": "2026-09-29T17:51:58.149", "session": "20260929-175158-mic10"}
+{"type": "link", "link_host_ms": 3.3, "l2_host_ms": 4.5, "preroll_ms": 250, "t_mono_us": 30379050400, "wall": "2026-09-29T17:51:58.153", "session": "20260929-175158-mic10"}
+{"type": "asr_partial", "text": "Vektora i", "text_raw": "i", "kw_mode": "prepend", "lag_ms": 710.15, "audio_ms": 2770, "first": true, "t_mono_us": 30382260400, "wall": "2026-09-29T17:52:01.364", "session": "20260929-175158-mic10"}
+{"type": "asr_partial", "text": "Vektora i were", "text_raw": "i were", "kw_mode": "prepend", "lag_ms": 428.25, "audio_ms": 3490, "t_mono_us": 30382697956, "wall": "2026-09-29T17:52:01.801", "session": "20260929-175158-mic10"}
+{"type": "stream_end", "reason": "key", "audio_ms": 4450, "t_mono_us": 30383248518, "wall": "2026-09-29T17:52:02.352", "session": "20260929-175158-mic10"}
+{"type": "asr_partial", "text": "Vektora i were yet", "text_raw": "i were yet", "kw_mode": "prepend", "lag_ms": 27.66, "audio_ms": 4450, "t_mono_us": 30383257831, "wall": "2026-09-29T17:52:02.361", "session": "20260929-175158-mic10"}
+{"type": "asr_final", "text": "Vektora i were yet", "text_raw": "i were yet", "kw": {"mode": "prepend", "replaced": []}, "decode_lag_median_ms": 428.25, "decode_lag_p90_ms": 428.25, "final_after_last_audio_ms": 78.7, "audio_ms": 4450, "rtf": 0.823, "t_mono_us": 30383337080, "wall": "2026-09-29T17:52:02.440", "session": "20260929-175158-mic10"}
+{"type": "final_ready", "final_after_end_ms": 89.1, "t_mono_us": 30383337676, "wall": "2026-09-29T17:52:02.441", "session": "20260929-175158-mic10"}

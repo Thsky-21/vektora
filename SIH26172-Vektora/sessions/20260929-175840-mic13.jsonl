@@ -1,0 +1,7 @@
+{"type": "detect", "wake": 1, "manual": true, "heard": "manual", "t_win_end_us": 0, "t_detect_us": 30781278556, "l1_ms": null, "t_mono_us": 30781278701, "wall": "2026-09-29T17:58:40.382", "session": "20260929-175840-mic13"}
+{"type": "link", "link_host_ms": 3.9, "l2_host_ms": 4.4, "preroll_ms": 0, "t_mono_us": 30781283046, "wall": "2026-09-29T17:58:40.386", "session": "20260929-175840-mic13"}
+{"type": "asr_partial", "text": "Vektora kelly", "text_raw": "kelly", "kw_mode": "prepend", "lag_ms": 66.43, "audio_ms": 5400, "first": true, "t_mono_us": 30788124183, "wall": "2026-09-29T17:58:47.227", "session": "20260929-175840-mic13"}
+{"type": "asr_partial", "text": "Vektora kelly this mess", "text_raw": "kelly this mess", "kw_mode": "prepend", "lag_ms": 843.16, "audio_ms": 10920, "t_mono_us": 30794421877, "wall": "2026-09-29T17:58:53.525", "session": "20260929-175840-mic13"}
+{"type": "stream_end", "reason": "disconnect", "audio_ms": 13180, "t_mono_us": 30795856727, "wall": "2026-09-29T17:58:54.959", "session": "20260929-175840-mic13"}
+{"type": "asr_final", "text": "Vektora kelly this mess this", "text_raw": "kelly this mess this", "kw": {"mode": "prepend", "replaced": []}, "decode_lag_median_ms": 843.16, "decode_lag_p90_ms": 66.43, "final_after_last_audio_ms": 192.4, "audio_ms": 13180, "rtf": 0.439, "t_mono_us": 30796052972, "wall": "2026-09-29T17:58:55.156", "session": "20260929-175840-mic13"}
+{"type": "final_ready", "final_after_end_ms": 196.5, "t_mono_us": 30796053200, "wall": "2026-09-29T17:58:55.156", "session": "20260929-175840-mic13"}

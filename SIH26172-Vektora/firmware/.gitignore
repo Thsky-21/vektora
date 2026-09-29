@@ -1,0 +1,6 @@
+build/
+managed_components/
+sdkconfig
+sdkconfig.old
+# WiFi credentials + server IP (CLAUDE.md Rule 7); template: main/secrets.example.h
+main/secrets.h

@@ -1,0 +1,14 @@
+{"type": "session_start", "transport": "http", "addr": "127.0.0.1", "content_length": "179040", "t_mono_us": 816380625000, "wall": "2026-09-28T22:16:34.799", "session": "20260928-221634-http2"}
+{"type": "server_rx_first", "t_rx_us": 816380625000, "t_mono_us": 816380625000, "wall": "2026-09-28T22:16:34.801", "session": "20260928-221634-http2"}
+{"type": "asr_partial", "text": "vector", "audio_ms": 1152, "first": true, "t_mono_us": 816381093000, "wall": "2026-09-28T22:16:35.267", "session": "20260928-221634-http2"}
+{"type": "asr_partial", "text": "vector want", "audio_ms": 2304, "t_mono_us": 816382281000, "wall": "2026-09-28T22:16:36.456", "session": "20260928-221634-http2"}
+{"type": "asr_partial", "text": "vector once you reach", "audio_ms": 2688, "t_mono_us": 816382656000, "wall": "2026-09-28T22:16:36.825", "session": "20260928-221634-http2"}
+{"type": "asr_partial", "text": "vector one two three four", "audio_ms": 2816, "t_mono_us": 816382812000, "wall": "2026-09-28T22:16:36.976", "session": "20260928-221634-http2"}
+{"type": "asr_partial", "text": "vector one two three four five", "audio_ms": 3072, "t_mono_us": 816383015000, "wall": "2026-09-28T22:16:37.191", "session": "20260928-221634-http2"}
+{"type": "asr_partial", "text": "vector one two three four five open", "audio_ms": 4608, "t_mono_us": 816384562000, "wall": "2026-09-28T22:16:38.739", "session": "20260928-221634-http2"}
+{"type": "asr_partial", "text": "vector one two three four five open the", "audio_ms": 4736, "t_mono_us": 816384687000, "wall": "2026-09-28T22:16:38.859", "session": "20260928-221634-http2"}
+{"type": "asr_partial", "text": "vector one two three four five open the workforce", "audio_ms": 5120, "t_mono_us": 816385109000, "wall": "2026-09-28T22:16:39.274", "session": "20260928-221634-http2"}
+{"type": "asr_partial", "text": "vector one two three four five open the log fire", "audio_ms": 5248, "t_mono_us": 816385203000, "wall": "2026-09-28T22:16:39.370", "session": "20260928-221634-http2"}
+{"type": "asr_partial", "text": "vector one two three four five open the log file", "audio_ms": 5504, "t_mono_us": 816385437000, "wall": "2026-09-28T22:16:39.615", "session": "20260928-221634-http2"}
+{"type": "asr_final", "text": "vector one two three four five open the log file", "final_after_last_audio_ms": 31.0, "audio_ms": 5595, "rtf": 0.149, "t_mono_us": 816385546000, "wall": "2026-09-28T22:16:39.714", "session": "20260928-221634-http2"}
+{"type": "session_end", "reason": "http_done", "text": "vector one two three four five open the log file", "latency": {"upload_ms": 4890.0, "final_after_last_byte_ms": 31.0, "audio_ms": 5595, "first_text_after_request_ms": 468.0}, "t_mono_us": 816385546000, "wall": "2026-09-28T22:16:39.714", "session": "20260928-221634-http2"}

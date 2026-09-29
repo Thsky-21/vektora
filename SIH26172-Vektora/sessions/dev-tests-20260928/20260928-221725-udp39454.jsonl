@@ -1,0 +1,31 @@
+{"type": "session_start", "transport": "udp", "addr": "127.0.0.1:64807", "dev_session": 39454, "t_mono_us": 816478748800, "wall": "2026-09-28T22:17:25.312", "session": "20260928-221725-udp39454"}
+{"type": "server_rx_first", "t_rx_us": 816478747458, "ptype": 1, "t_mono_us": 816478749754, "wall": "2026-09-28T22:17:25.313", "session": "20260928-221725-udp39454"}
+{"type": "hello", "score": 0.97, "t_win_end_us": 816483712102, "t_detect_us": 816483747102, "t_sock_us": 816483747104, "wifi_ms": 0, "fw": "test_sender", "cfg": "-", "codec": "pcm16", "t_mono_us": 816478749860, "wall": "2026-09-28T22:17:25.313", "session": "20260928-221725-udp39454"}
+{"type": "clock_sync", "rtt_us": 5903, "offset_us": -4997209, "error_bound_us": 2951, "t_mono_us": 816478777683, "wall": "2026-09-28T22:17:25.341", "session": "20260928-221725-udp39454"}
+{"type": "latency", "partial": true, "L1_ms": 35.0, "L2_ms": 0.0, "L3_ms": -2.44, "L3_error_ms": 2.95, "total_ms": 32.57, "t_mono_us": 816478777747, "wall": "2026-09-28T22:17:25.341", "session": "20260928-221725-udp39454"}
+{"type": "clock_sync", "rtt_us": 202, "offset_us": -5000008, "error_bound_us": 101, "t_mono_us": 816478808064, "wall": "2026-09-28T22:17:25.371", "session": "20260928-221725-udp39454"}
+{"type": "latency", "partial": true, "L1_ms": 35.0, "L2_ms": 0.0, "L3_ms": 0.36, "L3_error_ms": 0.1, "total_ms": 35.36, "t_mono_us": 816478808121, "wall": "2026-09-28T22:17:25.371", "session": "20260928-221725-udp39454"}
+{"type": "pkt_loss", "from_seq": 6, "count": 1, "t_mono_us": 816478822616, "wall": "2026-09-28T22:17:25.385", "session": "20260928-221725-udp39454"}
+{"type": "pkt_loss", "from_seq": 26, "count": 1, "t_mono_us": 816478933404, "wall": "2026-09-28T22:17:25.496", "session": "20260928-221725-udp39454"}
+{"type": "pkt_loss", "from_seq": 28, "count": 1, "t_mono_us": 816478978116, "wall": "2026-09-28T22:17:25.541", "session": "20260928-221725-udp39454"}
+{"type": "asr_partial", "text": "regular", "audio_ms": 1100, "first": true, "t_mono_us": 816479145862, "wall": "2026-09-28T22:17:25.708", "session": "20260928-221725-udp39454"}
+{"type": "pkt_loss", "from_seq": 63, "count": 1, "t_mono_us": 816479368309, "wall": "2026-09-28T22:17:25.931", "session": "20260928-221725-udp39454"}
+{"type": "pkt_loss", "from_seq": 65, "count": 1, "t_mono_us": 816479448779, "wall": "2026-09-28T22:17:26.011", "session": "20260928-221725-udp39454"}
+{"type": "pkt_loss", "from_seq": 69, "count": 1, "t_mono_us": 816479508572, "wall": "2026-09-28T22:17:26.071", "session": "20260928-221725-udp39454"}
+{"type": "pkt_loss", "from_seq": 100, "count": 1, "t_mono_us": 816480109003, "wall": "2026-09-28T22:17:26.671", "session": "20260928-221725-udp39454"}
+{"type": "asr_partial", "text": "regular want", "audio_ms": 2300, "t_mono_us": 816480395999, "wall": "2026-09-28T22:17:26.959", "session": "20260928-221725-udp39454"}
+{"type": "asr_partial", "text": "once you reach", "audio_ms": 2600, "t_mono_us": 816480680827, "wall": "2026-09-28T22:17:27.244", "session": "20260928-221725-udp39454"}
+{"type": "asr_partial", "text": "regular one two three four", "audio_ms": 2800, "t_mono_us": 816480893872, "wall": "2026-09-28T22:17:27.457", "session": "20260928-221725-udp39454"}
+{"type": "asr_partial", "text": "regular one two three four five", "audio_ms": 3000, "t_mono_us": 816481060858, "wall": "2026-09-28T22:17:27.624", "session": "20260928-221725-udp39454"}
+{"type": "pkt_loss", "from_seq": 152, "count": 1, "t_mono_us": 816481148714, "wall": "2026-09-28T22:17:27.711", "session": "20260928-221725-udp39454"}
+{"type": "pkt_loss", "from_seq": 180, "count": 1, "t_mono_us": 816481728213, "wall": "2026-09-28T22:17:28.291", "session": "20260928-221725-udp39454"}
+{"type": "pkt_loss", "from_seq": 196, "count": 1, "t_mono_us": 816482028114, "wall": "2026-09-28T22:17:28.590", "session": "20260928-221725-udp39454"}
+{"type": "pkt_loss", "from_seq": 210, "count": 1, "t_mono_us": 816482348439, "wall": "2026-09-28T22:17:28.911", "session": "20260928-221725-udp39454"}
+{"type": "asr_partial", "text": "regular one two three four five open", "audio_ms": 4500, "t_mono_us": 816482572718, "wall": "2026-09-28T22:17:29.136", "session": "20260928-221725-udp39454"}
+{"type": "asr_partial", "text": "regular one two three four five open the", "audio_ms": 4700, "t_mono_us": 816482785898, "wall": "2026-09-28T22:17:29.348", "session": "20260928-221725-udp39454"}
+{"type": "pkt_loss", "from_seq": 237, "count": 1, "t_mono_us": 816482868624, "wall": "2026-09-28T22:17:29.432", "session": "20260928-221725-udp39454"}
+{"type": "asr_partial", "text": "regular one two three four five open the workforce", "audio_ms": 5000, "t_mono_us": 816483115290, "wall": "2026-09-28T22:17:29.678", "session": "20260928-221725-udp39454"}
+{"type": "asr_partial", "text": "regular one two three four five open the log fire", "audio_ms": 5200, "t_mono_us": 816483265178, "wall": "2026-09-28T22:17:29.828", "session": "20260928-221725-udp39454"}
+{"type": "asr_partial", "text": "regular one two three four five open the log file", "audio_ms": 5400, "t_mono_us": 816483440786, "wall": "2026-09-28T22:17:30.003", "session": "20260928-221725-udp39454"}
+{"type": "asr_final", "text": "regular one two three four five open the log file", "final_after_last_audio_ms": 30.4, "audio_ms": 5595, "rtf": 0.153, "t_mono_us": 816483679734, "wall": "2026-09-28T22:17:30.243", "session": "20260928-221725-udp39454"}
+{"type": "session_end", "reason": "end", "text": "regular one two three four five open the log file", "packets": 268, "lost": 12, "late": 0, "end_to_final_ms": 31.1, "device_stats": null, "latency": {"L1_ms": 35.0, "L2_ms": 0.0, "L3_ms": 0.36, "L3_error_ms": 0.1, "L4_ms": 392.69, "total_ms": 35.36, "keyword_end_to_first_text_ms": 433.76}, "t_mono_us": 816483680253, "wall": "2026-09-28T22:17:30.243", "session": "20260928-221725-udp39454"}

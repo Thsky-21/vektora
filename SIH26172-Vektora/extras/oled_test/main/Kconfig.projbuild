@@ -1,0 +1,33 @@
+menu "Vektora OLED CPU test"
+
+    config OLED_I2C_SDA_GPIO
+        int "OLED SDA GPIO"
+        default 21
+        help
+            Confirmed wiring, 2026-09-28: SDA -> GPIO21.
+
+    config OLED_I2C_SCL_GPIO
+        int "OLED SCL GPIO"
+        default 22
+        help
+            Confirmed wiring, 2026-09-28: SCL -> GPIO22.
+
+    config OLED_I2C_ADDR
+        hex "SSD1306 7-bit I2C address"
+        default 0x3C
+        help
+            0x3C on almost every 0.96" SSD1306 module. A few boards are
+            wired to 0x3D instead (check the module's silkscreen/datasheet
+            if the display stays blank).
+
+    config OLED_ARENA_KB
+        int "TFLite Micro tensor arena, upper bound (KB)"
+        default 128
+        help
+            Upper bound only — main.cc clamps this to the largest free
+            contiguous heap block minus a safety margin at boot, exactly
+            like prototype/firmware. The Run 3 model measured 80,656 bytes
+            used on the real board (CLAUDE.md §12.5), so 128 KB leaves
+            headroom without wasting the whole 160 KB the first attempt used.
+
+endmenu

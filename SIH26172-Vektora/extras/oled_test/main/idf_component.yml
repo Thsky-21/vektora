@@ -1,0 +1,6 @@
+## Downloaded automatically by `idf.py build` into managed_components/.
+dependencies:
+  idf: ">=5.1"
+  # Same pinned version as firmware — this project runs the exact
+  # same Run 3 model, so it must run on the exact same TFLite Micro build.
+  espressif/esp-tflite-micro: "==1.4.0"

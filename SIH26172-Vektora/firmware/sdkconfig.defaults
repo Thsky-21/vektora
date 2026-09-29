@@ -1,0 +1,48 @@
+CONFIG_IDF_TARGET="esp32s3"
+CONFIG_ESPTOOLPY_FLASHSIZE_16MB=y
+# TFLite Micro + model do not fit the default 1 MB app partition comfortably.
+CONFIG_PARTITION_TABLE_SINGLE_APP_LARGE=y
+CONFIG_COMPILER_OPTIMIZATION_PERF=y
+CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ_240=y
+CONFIG_ESP_MAIN_TASK_STACK_SIZE=8192
+# 921600: the 2 Hz JSON telemetry + logs, and what tools/serial_logger.py expects.
+# Baud is only honoured with a CUSTOM console UART (Kconfig), else stays 115200.
+CONFIG_ESP_CONSOLE_UART_CUSTOM=y
+CONFIG_ESP_CONSOLE_UART_BAUDRATE=921600
+
+# Board wiring, ESP32-S3 on COM10 (confirmed by the user 2026-09-29):
+# INMP441 SCK=GPIO4, WS=GPIO5, SD=GPIO6, L/R->3V3 (so it sends in the RIGHT
+# slot; the boot mic probe re-checks this). External LED+330ohm on GPIO2
+# (onboard GPIO48 is WS2812, needs RMT, not plain gpio_set_level).
+CONFIG_VK_I2S_SD_GPIO=6
+CONFIG_VK_I2S_WS_GPIO=5
+CONFIG_VK_I2S_SCK_GPIO=4
+CONFIG_VK_I2S_RIGHT_CHANNEL=y
+CONFIG_VK_LED_GPIO=2
+CONFIG_VK_ARENA_KB=160
+
+# The inference task is compute-bound for ~0.5 s at a time, which starves the
+# idle task on that core. That is expected here, so don't let it panic the board.
+CONFIG_ESP_TASK_WDT_CHECK_IDLE_TASK_CPU0=n
+CONFIG_ESP_TASK_WDT_CHECK_IDLE_TASK_CPU1=n
+
+# Per-task run-time accounting, so CPU load per core is measured instead of
+# inferred from timings. U64 counter: the u32 esp_timer counter wraps every
+# ~71 minutes, which would corrupt a long soak measurement.
+CONFIG_FREERTOS_USE_TRACE_FACILITY=y
+CONFIG_FREERTOS_GENERATE_RUN_TIME_STATS=y
+CONFIG_FREERTOS_RUN_TIME_COUNTER_TYPE_U64=y
+
+# --- ASR upload (2026-09-18) ------------------------------------------------
+# lwip's TCP/IP task defaults to no core affinity, so it can land on core 1
+# and compete with capture_task's 10 ms audio deadline. Pin it to core 0,
+# where the network work belongs. (The WiFi task is already core 0.)
+CONFIG_LWIP_TCPIP_TASK_AFFINITY_CPU0=y
+
+# Trim the WiFi buffer pools. The defaults are sized for sustained
+# throughput; we send 128 kB in a burst once per wake, so this reclaims
+# ~15-20 kB of internal DRAM that the tensor arena and the PCM ring
+# need more than the radio does.
+CONFIG_ESP_WIFI_STATIC_RX_BUFFER_NUM=6
+CONFIG_ESP_WIFI_DYNAMIC_RX_BUFFER_NUM=16
+CONFIG_ESP_WIFI_DYNAMIC_TX_BUFFER_NUM=16

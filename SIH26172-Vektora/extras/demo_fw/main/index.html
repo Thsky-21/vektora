@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vektora</title>
+<style>
+:root{--navy:#0B2545;--saffron:#F28C28;--ok:#1a7f37;--bad:#c62828;--mute:#6b7280}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,Inter,sans-serif;background:#fff;color:#111}
+header{background:var(--navy);color:#fff;padding:14px 16px}
+header b{font-size:18px}header small{display:block;opacity:.75;font-size:12px;margin-top:2px}
+main{padding:16px;max-width:520px;margin:auto}
+.btns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px}
+button{font:600 16px system-ui;padding:18px 8px;border-radius:12px;border:2px solid var(--navy);background:#fff;color:var(--navy)}
+button.on{background:var(--saffron);border-color:var(--saffron);color:#fff}
+.card{border:1px solid #e5e7eb;border-radius:12px;padding:14px;margin-bottom:12px}
+.row{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;border-bottom:1px solid #f1f1f1}
+.row:last-child{border:0}.v{font:600 18px ui-monospace,monospace}
+.bar{height:10px;background:#eef1f5;border-radius:5px;position:relative;margin:4px 0 10px}
+.bar i{display:block;height:100%;border-radius:5px;background:var(--navy);transition:width .4s}
+.bar .lim{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--bad);left:10%}
+.pass{color:var(--ok);font-weight:700}.fail{color:var(--bad);font-weight:700}
+.state{font-weight:700}.mute{color:var(--mute);font-size:12px}
+</style></head><body>
+<header><b>Vektora · SIH26172</b><small>ESP32-S3 edge voice activator · live device stats</small></header>
+<main>
+<div class="btns">
+  <button id="gate" onclick="hit('gate')">GATE</button>
+  <button id="led" onclick="hit('led')">LED</button>
+  <button id="act" onclick="hit('active')">WAKE</button>
+</div>
+<div class="card">
+  <div class="row"><span>State</span><span class="state" id="state">—</span></div>
+  <div class="row"><span>CPU avg</span><span><span class="v" id="cpu">—</span> <span id="verdict"></span></span></div>
+  <div class="bar"><i id="cpubar" style="width:0"></i><span class="lim"></span></div>
+  <div class="row"><span>Core 0</span><span class="v" id="cpu0">—</span></div>
+  <div class="row"><span>Core 1</span><span class="v" id="cpu1">—</span></div>
+  <div class="row"><span>Wake latency</span><span class="v" id="lat">—</span></div>
+</div>
+<div class="card">
+  <div class="row"><span>RAM used</span><span class="v" id="ram">—</span></div>
+  <div class="row"><span>RAM peak</span><span class="v" id="peak">—</span></div>
+  <div class="row"><span>Wi-Fi clients</span><span class="v" id="cl">—</span></div>
+  <div class="row"><span>DSP frames</span><span class="v" id="fr">—</span></div>
+  <div class="row"><span>Audio sent</span><span class="v" id="tx">—</span></div>
+  <div class="row"><span>Uptime</span><span class="v" id="up">—</span></div>
+</div>
+<p class="mute">CPU = 100 − idle-task share per core (FreeRTOS run-time counters, 1 s window). RAM = internal SRAM heap in use. Limit line: 10 %. Wake latency = WAKE press → first audio packet sent (0.75 s pre-roll features + UDP), timed on the device.</p>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const f=x=>x==null?'—':x.toFixed(2)+' %';
+function show(s){
+  $('led').className=s.led?'on':'';$('led').textContent=s.led?'LED ON':'LED OFF';
+  $('act').className=s.active?'on':'';$('act').textContent=s.active?'ACTIVE · STOP':'WAKE';
+  $('gate').className=s.gate?'on':'';$('gate').textContent=s.gate?'GATE ON':'GATE';
+  $('state').textContent={IDLE:'IDLE (listening)',GATE:'GATE (energy / voice check)',LED:'LED (wake indicator)',ACTIVE:'ACTIVE (DSP + Wi-Fi stream)'}[s.state]||s.state;
+  $('lat').textContent=s.lat_ms==null?'—':s.lat_ms+' ms';
+  $('cpu').textContent=f(s.cpu);$('cpu0').textContent=f(s.cpu0);$('cpu1').textContent=f(s.cpu1);
+  $('cpubar').style.width=(s.cpu==null?0:Math.min(100,s.cpu))+'%';
+  const v=$('verdict');
+  if(s.cpu==null||s.active){v.textContent='';}
+  else if(s.cpu<10){v.textContent='< 10 % PASS';v.className='pass';}
+  else{v.textContent='< 10 % FAIL';v.className='fail';}
+  $('ram').textContent=s.ram_kb+' / '+s.ram_total_kb+' KB';
+  $('peak').textContent=s.ram_peak_kb+' KB';
+  $('cl').textContent=s.clients;$('fr').textContent=s.frames;$('tx').textContent=s.tx_kb+' KB';
+  const u=s.up,p=n=>String(n).padStart(2,'0');
+  $('up').textContent=p(Math.floor(u/3600))+':'+p(Math.floor(u/60)%60)+':'+p(u%60);
+}
+async function get(u){try{const r=await fetch(u,{cache:'no-store'});show(await r.json());}catch(e){}}
+function hit(w){get('/api/'+w);}
+get('/api/stats');setInterval(()=>get('/api/stats'),1000);
+</script>
+</body></html>

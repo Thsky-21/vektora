@@ -1,0 +1,30 @@
+{"type": "session_start", "transport": "udp", "addr": "127.0.0.1:49665", "dev_session": 39448, "t_mono_us": 816473807459, "wall": "2026-09-28T22:17:20.370", "session": "20260928-221720-udp39448"}
+{"type": "server_rx_first", "t_rx_us": 816473806618, "ptype": 1, "t_mono_us": 816473808043, "wall": "2026-09-28T22:17:20.370", "session": "20260928-221720-udp39448"}
+{"type": "hello", "score": 0.97, "t_win_end_us": 816478771313, "t_detect_us": 816478806313, "t_sock_us": 816478806316, "wifi_ms": 0, "fw": "test_sender", "cfg": "-", "codec": "pcm16", "t_mono_us": 816473808139, "wall": "2026-09-28T22:17:20.370", "session": "20260928-221720-udp39448"}
+{"type": "clock_sync", "rtt_us": 2596, "offset_us": -4998906, "error_bound_us": 1298, "t_mono_us": 816473837279, "wall": "2026-09-28T22:17:20.400", "session": "20260928-221720-udp39448"}
+{"type": "latency", "partial": true, "L1_ms": 35.0, "L2_ms": 0.0, "L3_ms": -0.79, "L3_error_ms": 1.3, "total_ms": 34.21, "t_mono_us": 816473837399, "wall": "2026-09-28T22:17:20.400", "session": "20260928-221720-udp39448"}
+{"type": "clock_sync", "rtt_us": 389, "offset_us": -5000011, "error_bound_us": 194, "t_mono_us": 816473872163, "wall": "2026-09-28T22:17:20.435", "session": "20260928-221720-udp39448"}
+{"type": "latency", "partial": true, "L1_ms": 35.0, "L2_ms": 0.0, "L3_ms": 0.31, "L3_error_ms": 0.19, "total_ms": 35.32, "t_mono_us": 816473872239, "wall": "2026-09-28T22:17:20.435", "session": "20260928-221720-udp39448"}
+{"type": "asr_partial", "text": "vector", "audio_ms": 1100, "first": true, "t_mono_us": 816474216436, "wall": "2026-09-28T22:17:20.779", "session": "20260928-221720-udp39448"}
+{"type": "pkt_loss", "from_seq": 64, "count": 1, "t_mono_us": 816474448043, "wall": "2026-09-28T22:17:21.010", "session": "20260928-221720-udp39448"}
+{"type": "pkt_loss", "from_seq": 88, "count": 1, "t_mono_us": 816474947708, "wall": "2026-09-28T22:17:21.510", "session": "20260928-221720-udp39448"}
+{"type": "pkt_loss", "from_seq": 97, "count": 1, "t_mono_us": 816475107480, "wall": "2026-09-28T22:17:21.670", "session": "20260928-221720-udp39448"}
+{"type": "asr_partial", "text": "vector want", "audio_ms": 2300, "t_mono_us": 816475458607, "wall": "2026-09-28T22:17:22.021", "session": "20260928-221720-udp39448"}
+{"type": "pkt_loss", "from_seq": 117, "count": 1, "t_mono_us": 816475507391, "wall": "2026-09-28T22:17:22.070", "session": "20260928-221720-udp39448"}
+{"type": "pkt_loss", "from_seq": 129, "count": 1, "t_mono_us": 816475747710, "wall": "2026-09-28T22:17:22.310", "session": "20260928-221720-udp39448"}
+{"type": "asr_partial", "text": "vector once you reach", "audio_ms": 2600, "t_mono_us": 816475809933, "wall": "2026-09-28T22:17:22.372", "session": "20260928-221720-udp39448"}
+{"type": "asr_partial", "text": "vector want you to reform", "audio_ms": 2800, "t_mono_us": 816475942552, "wall": "2026-09-28T22:17:22.506", "session": "20260928-221720-udp39448"}
+{"type": "asr_partial", "text": "vector once you three four five", "audio_ms": 3000, "t_mono_us": 816476126951, "wall": "2026-09-28T22:17:22.690", "session": "20260928-221720-udp39448"}
+{"type": "pkt_loss", "from_seq": 162, "count": 1, "t_mono_us": 816476427737, "wall": "2026-09-28T22:17:22.990", "session": "20260928-221720-udp39448"}
+{"type": "pkt_loss", "from_seq": 210, "count": 1, "t_mono_us": 816477367489, "wall": "2026-09-28T22:17:23.930", "session": "20260928-221720-udp39448"}
+{"type": "asr_partial", "text": "vector once you three four five open", "audio_ms": 4500, "t_mono_us": 816477649779, "wall": "2026-09-28T22:17:24.212", "session": "20260928-221720-udp39448"}
+{"type": "asr_partial", "text": "vector once you three four five open the", "audio_ms": 4700, "t_mono_us": 816477841270, "wall": "2026-09-28T22:17:24.403", "session": "20260928-221720-udp39448"}
+{"type": "asr_partial", "text": "vector once you three four five open the workforce", "audio_ms": 5000, "t_mono_us": 816478169723, "wall": "2026-09-28T22:17:24.733", "session": "20260928-221720-udp39448"}
+{"type": "asr_partial", "text": "vector once you three four five open the log fire", "audio_ms": 5200, "t_mono_us": 816478323622, "wall": "2026-09-28T22:17:24.887", "session": "20260928-221720-udp39448"}
+{"type": "pkt_loss", "from_seq": 263, "count": 1, "t_mono_us": 816478447525, "wall": "2026-09-28T22:17:25.010", "session": "20260928-221720-udp39448"}
+{"type": "asr_partial", "text": "vector once you three four five open the log file", "audio_ms": 5400, "t_mono_us": 816478514849, "wall": "2026-09-28T22:17:25.078", "session": "20260928-221720-udp39448"}
+{"type": "pkt_loss", "from_seq": 270, "count": 1, "t_mono_us": 816478587483, "wall": "2026-09-28T22:17:25.150", "session": "20260928-221720-udp39448"}
+{"type": "clock_sync", "rtt_us": 222, "offset_us": -5000039, "error_bound_us": 111, "t_mono_us": 816478708921, "wall": "2026-09-28T22:17:25.272", "session": "20260928-221720-udp39448"}
+{"type": "latency", "partial": true, "L1_ms": 35.0, "L2_ms": 0.0, "L3_ms": 0.34, "L3_error_ms": 0.11, "L4_ms": 407.36, "total_ms": 35.34, "keyword_end_to_first_text_ms": 445.16, "t_mono_us": 816478709142, "wall": "2026-09-28T22:17:25.272", "session": "20260928-221720-udp39448"}
+{"type": "asr_final", "text": "vector once you three four five open the log file", "final_after_last_audio_ms": 31.0, "audio_ms": 5595, "rtf": 0.156, "t_mono_us": 816478740546, "wall": "2026-09-28T22:17:25.304", "session": "20260928-221720-udp39448"}
+{"type": "session_end", "reason": "end", "text": "vector once you three four five open the log file", "packets": 271, "lost": 9, "late": 0, "end_to_final_ms": 31.5, "device_stats": null, "latency": {"L1_ms": 35.0, "L2_ms": 0.0, "L3_ms": 0.34, "L3_error_ms": 0.11, "L4_ms": 407.36, "total_ms": 35.34, "keyword_end_to_first_text_ms": 445.16}, "t_mono_us": 816478741042, "wall": "2026-09-28T22:17:25.304", "session": "20260928-221720-udp39448"}

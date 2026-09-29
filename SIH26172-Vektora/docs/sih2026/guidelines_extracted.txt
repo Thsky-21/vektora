@@ -1,0 +1,403 @@
+--- p1
+SMART INDIA
+HACKATHON 2026 
+#InnovationseAtmaNirbharBharat
+GUIDELINES
+--- p2
+TABLE OF CONTENTS
+SPOC Registration
+Internal Hackathon
+Team Formation and Registration
+Team Nomination Process
+Idea Submission Process
+General Guideline 
+Contact Details
+01
+02
+03
+04
+05
+06
+07
+--- p3
+01
+SIH 2026
+SPOC
+REGISTRATION
+--- p4
+SIH 2026
+HOW TO REGISTER:
+ Students: You cannot register directly. Your college’s SPOC
+(Single Point of Contact) will handle registrations.
+ SPOCs: Visit Smart India Hackathon’s official website for
+registration.
+02WHO CAN BE SPOC:
+The SPOC (Single Point of Contact) for Smart India Hackathon 2026
+can be any senior member of the college faculty, such as Lecturer
+Assistant Professor, Associate Professor, Professor, Head of
+Department (HOD), Dean, Director, Principal or another designated
+official.
+The SPOC is typically responsible for coordinating the internal hackathon,
+managing student registrations, and ensuring that all guidelines are followed for
+the institution's participation in the event.
+--- p5
+SIH 2026
+After SPOC registration, the SIH
+implementation team authorizes the
+account.
+Once verified, the SPOC gains access to
+the SIH portal.
+SPOC ACCOUNT APPROVAL
+03
+--- p6
+Only students
+selected in the
+Internal Hackathon
+can be registered.
+The college SPOC
+nominates top
+teams based on
+internal hackathon
+results
+Maximum of 50 teams
+from one institute
+and 100 teams from
+university can be
+nominated  in Smart
+India Hackathon 2026.
+STUDENT REGISTRATION CRITERIA
+04
+SIH 2026
+--- p7
+SIH 2026
+INTERNAL
+HACKATHON
+--- p8
+DETAILS TO BE PROVIDED BY THE SPOC FOR
+INTERNAL HACKATHON SUBMISSION
+05
+Internal Hackathon
+Report
+Total Number of Teams
+Participated
+Total Number of Female
+Participants
+Internal Hackathon
+Image/Video Link
+Date of Internal
+Hackathon
+Total Number of
+Male Participants
+Internal Hackathon
+Location
+Total Number of
+Students Participated
+Mode of the Internal
+Hackathon
+(Online/Offline)
+SIH 2026
+--- p9
+SIH 2026
+CONDUCTING INTERNAL HACKATHON
+SPOCs must upload a detailed Internal Hackathon report (maximum 15 pages) on the dashboard
+portal
+06
+The report should include
+Event overview (1 page)
+Event photos (2 pages)
+Participating teams’ pictures (2 pages)
+Judging process (1 page)
+Jury panel details (1 page)
+Nominated top teams (1 page)
+Judges’ information (1 page)
+Total participating teams & students (2 pages)
+News articles (1 page)
+Social media promotion (1 page) with hashtags
+#sih2026 and #smartindiahackathon2026
+Tag the official page of Innovation Cell, Ministry
+of Education on Twitter.
+--- p10
+SIH 2026
+TEAM FORMATION
+AND REGISTRATION 
+--- p11
+SIH 2026
+STUDENT/TEAM FORMATION 07
+All team members
+must be from the
+same college (no
+inter-college
+teams)
+Each team consists
+of 6 members,
+including the team
+leader.
+At least one female
+team member is
+mandatory
+For software edition, programming skills are crucial. For hardware edition,
+multi-disciplinary teams are encouraged (Mechanical Engineers, Electronic
+Engineers, Product Designers, Programmers, etc.)
+--- p12
+MAXIMUM 50 (45
+SHORTLISTED + 5
+WAITLISTED)
+TEAMS CAN
+PARTICIPATE IN
+SMART INDIA
+HACKATHON 2026
+FROM INSTITUTE
+STUDENT REGISTRATION CRITERIA
+08
+ONLY STUDENTS
+SELECTED IN THE
+INTERNAL
+HACKATHON CAN BE
+REGISTERED FOR THE
+SMART INDIA
+HACKATHON 2026
+THE COLLEGE SPOC
+NOMINATES TOP
+TEAMS BASED ON
+INTERNAL
+HACKATHON
+RESULTS.
+SIH 2026
+NOTE: UNIVERSITY CAN  NOMINIATE UPTO 100 TEAMS
+--- p13
+TEAM
+NOMINATION
+PROCESS
+SIH 2026
+--- p14
+TEAM
+NOMINATION
+PROCESS
+It is mandatory that the College SPOC enters the details for a
+nominated team in the prescribed format only (Annexure A, also can
+be downloaded from the SPOC dashboard). Team details once entered
+cannot be altered. College SPOC will be responsible to ensure that all
+the data entered by him/ her is accurate
+The letter must be issued on college letterhead only. It must clearly
+state name of the team and all 6 team members and upto 2
+Faculty/Industry Mentor and must be duly signed by college principal/
+dean/ institute director and bear the college seal. This letter will be
+required during the grand finale, if the team is selected for grand
+finale
+The team name should be unique and must not contain the name of
+your institute in any form
+A max of 50 teams (45 Shortlisted + 05 Waitlisted) per college and in
+case of university 100 Team can be nominated (including Problem
+statement based/Student innovation category)
+There is no bar for the Software and hardware categories. You can
+make the combination as per your convenience but the total number of
+the teams should not breach 50 team’s criteria for institute and 100 for
+university.
+SIH 2026
+09
+
+--- p15
+IDEA
+SUBMISSION
+PROCESS
+SIH 2026
+--- p16
+SIH 2026
+IDEA SUBMISSION PROCESS 10
+Idea submission counter will start from Aug 2026 and only 500 ideas will be submitted for a
+particular PS. Once the count number got all 500 ideas, the particular PS will get freeze and
+no idea submission will be allowed for the respective PS
+Count number with the ideas submitted numbers and Ideas left numbers will be displayed
+in the public domain just opposite to the PS and can be viewed by anyone on sih.gov.in
+One team can submit Ideas against maximum of 2 Problem Statement only
+Nominated Team’s team leader will get the Login credentials after SPOC upload team
+details in the portal to complete the idea submission process
+The last date for team nomination and idea submission by College SPOC and Team leader
+on SIH portal is till 30th Sept 2026 only. No request will be entertained after the deadline
+SPOC registration will start from July 2026 & the last date for team nomination and
+idea submission by College SPOC on SIH portal is till 30  Sep 2026.th
+
+--- p17
+The team leader needs to enter the details on the SIH portal that include:
+1) Verify pre-entered Team name.
+2) Verify pre-entered College authorization letter PDF (in given format)
+3) Verify pre-entered Names of team leader and the rest 5 team members
+4) Verify pre-entered Gender of team leader and the rest 5 team members
+5) Verify pre-entered Email id of all the team members along with the team leader
+6) Verify pre-entered Mobile no. of all the team members along with the team leader
+7) Chosen problem statement or Student Innovation Category.
+8) Idea title.
+9) Idea description.
+10) Idea presentation (PDF).
+IDEA SUBMISSION PROCESS
+SIH 2026
+11
+--- p18
+Notification about
+selected teams will be
+put up on our portal and
+will also be sent to their
+respective email IDs
+4-5 teams per problem statement
+may be selected for the grand
+finale, but the final decision rests
+with the problem statement
+creating organization, which isn't
+obligated to declare a winner
+unless student proposals meet
+their expectations
+Be available for
+meetings, sessions and
+trainings during the
+preparation phase; you
+will be notified about
+them in advance
+SHORTLISTED IDEAS ANNOUNCEMENT
+SIH 2026
+12
+
+--- p19
+GENERAL
+GUIDLINES
+SIH 2026
+--- p20
+MODE OF SIH GRAND FINALE
+Post Idea submission process, the ideas will be evaluated by experts.
+Evaluation criteria will include novelty of the idea, complexity, clarity and
+details in the prescribed format, feasibility, practicability, sustainability, scale
+of impact, user experience and potential for future work progression.
+13
+IDEA SELECTION CRITERIA
+SIH 2026 Grand Finale will be held offline at various nodal centers across pan
+India and teams have to travelled to their respective nodal centers.The Grand
+Finale of Smart India Hackathon (SIH) 2026 is proposed to be organized in
+December 2026
+SIH 2026
+--- p21
+SIH 2026
+ MENTORS ELIGIBILITY 
+14
+For the SIH Grand Finale, after the teams are shortlisted, each team will
+have the option to select up to 2 mentors from industry or academia. A
+mentor is expected to possess relevant experience( 5 years)  in industry
+and/or academic domains to qualify.
+Each team, consisting of 6 student members, may include up to 2
+mentors in addition to the core student team. However, the
+participation of mentors along with the team is optional and entirely at
+the discretion of the team.
+--- p22
+RESPONSIBILITIES OF MENTOR
+To mentor and guide teams via
+phone/video-chat or in person before
+the grand finale to help convert
+students' ideas into a working prototype
+To work collaboratively with the allotted
+student team during the SIH Grand
+Finale to build a working prototype
+The travel and accommodation of students and their mentors will be taken care by
+SIH2026 organizers. However, both mentor and students are eligible for same class of
+stay and travel
+To provide guidance and support to
+their allocated teams. Mentors along
+with participating students work
+together as a team during the grand
+finale
+Out-station travel to the hackathon
+venue may be necessary to participate
+in the Grand Finale
+SIH 2026
+15
+--- p23
+SIH 2026
+GENERAL INFORMATION REGARDING THE
+GRAND FINALE
+16
+If a team is selected for the final Hackathon, members
+will need to travel to the assigned nodal center which
+can be anywhere in India
+No person—whether a faculty member, family member,
+friend, or anyone else—apart from the officially
+registered student team members and mentors will be
+allowed to participate in or stay at the hackathon venue.
+Additionally, no reimbursement claims from any such
+unregistered individuals will be entertained.
+Shortlisted teams along with mentor traveling to the
+grand finale are eligible for The maximum ceiling of
+travel reimbursement is Rs 3,000/- per person (subject
+to actuals) for round trip including local mileage, if any
+based on production the actual bills irrespective of
+any mode of travel
+The nodal centers will be arranging for
+accommodation of teams during the grand finale
+Each college/institute will issue a stamped photo ID to
+each member of the teams selected for the finale
+College photo ID and Consent letter copy is
+mandatory for participating in the finale
+--- p24
+Intellectual property (IP)
+of the winning idea would
+be split equally between
+industry that gave the
+problem statements and
+the winning team or will
+be decided on the mutual
+agreement.
+Selected ideas will be
+supported to be developed
+further so that industries/
+government institutions
+will be able to utilize these
+ideas; more efforts beyond
+the finale are required
+from the selected teams
+thereafter
+The ideas or solutions
+provided/developed/pro
+posed by the teams must
+be new and must not
+have been present in any
+previous event/program
+of any sort
+ MISCELLANEOUS INFORMATION
+17
+SIH 2026
+--- p25
+SIH 2026
+PROBLEM
+STATEMENTS
+AND PRIZES 
+18
+There would be ONE single winning team for every
+problem statement posted on the portal. The prize
+money will be given by the collaborating ministry/
+industry ONLY IF that organization likes the idea of
+the winning team. However, it is NOT mandatory to
+announce only one winning team against each
+problem statement. 
+SIH2026 brings you problem
+statements from leading public and
+private organizations, union
+ministries, state governments and
+NGOs in India
+Amount of prize money to be
+awarded to each winning team is
+Rs.1,50,000/- per problem statement
+If there is a tie between two or more teams, the final
+decision of the prize money distribution will be
+taken by the problem statement creator only and
+once the decision is made, it won’t be changed
+further
+Teams are encouraged to think out-of-the-box and
+provide creative solutions to themes under ‘Students
+Innovation’ category. 
+--- p26
+Phone Number
+ 011 2958 1239/40/41
+Website
+sih.gov.in
+Email Address
+sih@aicte-india.org
+hackathon@aicte-india.org
+CONTACT INFORMATION
+19
+SIH 2026

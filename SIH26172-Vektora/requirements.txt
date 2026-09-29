@@ -1,0 +1,7 @@
+# Python 3.11/3.12. Licences in docs/licences.md.
+fastapi>=0.115
+uvicorn[standard]>=0.30
+vosk==0.3.45
+numpy
+pyserial>=3.5      # tools/serial_logger.py
+websockets>=12

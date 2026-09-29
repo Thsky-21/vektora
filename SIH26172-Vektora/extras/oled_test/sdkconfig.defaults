@@ -1,0 +1,21 @@
+CONFIG_IDF_TARGET="esp32"
+CONFIG_ESPTOOLPY_FLASHSIZE_4MB=y
+# TFLite Micro + model don't fit the default 1 MB app partition comfortably
+# (same reason as firmware).
+CONFIG_PARTITION_TABLE_SINGLE_APP_LARGE=y
+CONFIG_COMPILER_OPTIMIZATION_PERF=y
+CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ_240=y
+CONFIG_ESP_MAIN_TASK_STACK_SIZE=8192
+CONFIG_ESP_CONSOLE_UART_BAUDRATE=115200
+
+# The infer task runs the model back-to-back on core 0 with almost no
+# yielding, which starves the idle task there. Same fix as firmware
+# §12.2(3) — this is expected here, not a fault to panic on.
+CONFIG_ESP_TASK_WDT_CHECK_IDLE_TASK_CPU0=n
+
+# Per-task run-time accounting, so CPU load per core is measured instead of
+# inferred from timings. U64 counter: the u32 esp_timer counter wraps every
+# ~71 minutes, which would corrupt a long soak.
+CONFIG_FREERTOS_USE_TRACE_FACILITY=y
+CONFIG_FREERTOS_GENERATE_RUN_TIME_STATS=y
+CONFIG_FREERTOS_RUN_TIME_COUNTER_TYPE_U64=y

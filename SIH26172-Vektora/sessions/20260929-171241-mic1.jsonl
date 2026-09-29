@@ -1,0 +1,6 @@
+{"type": "detect", "wake": 1, "manual": false, "heard": "vector", "t_win_end_us": 28021650179, "t_detect_us": 28022373394, "l1_ms": 723.2, "t_mono_us": 28022373459, "wall": "2026-09-29T17:12:41.476", "session": "20260929-171241-mic1"}
+{"type": "link", "link_host_ms": 2.0, "l2_host_ms": 2.2, "preroll_ms": 1210, "t_mono_us": 28022376047, "wall": "2026-09-29T17:12:41.478", "session": "20260929-171241-mic1"}
+{"type": "asr_partial", "text": "Vektora", "text_raw": "vector", "kw_mode": "timed", "lag_ms": 49.02, "audio_ms": 2290, "first": true, "t_mono_us": 28023930548, "wall": "2026-09-29T17:12:43.034", "session": "20260929-171241-mic1"}
+{"type": "stream_end", "reason": "silence", "audio_ms": 3810, "t_mono_us": 28026075207, "wall": "2026-09-29T17:12:45.179", "session": "20260929-171241-mic1"}
+{"type": "asr_final", "text": "Vektora want you three four five", "text_raw": "vector want you three four five", "kw": {"mode": "timed", "replaced": ["vector"], "kw_end_s": 0.82}, "decode_lag_median_ms": 49.02, "decode_lag_p90_ms": 49.02, "final_after_last_audio_ms": 50.1, "audio_ms": 3830, "rtf": 0.266, "t_mono_us": 28026125878, "wall": "2026-09-29T17:12:45.229", "session": "20260929-171241-mic1"}
+{"type": "final_ready", "final_after_end_ms": 50.8, "t_mono_us": 28026125996, "wall": "2026-09-29T17:12:45.229", "session": "20260929-171241-mic1"}

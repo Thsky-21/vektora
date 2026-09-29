@@ -1,0 +1,5 @@
+{"type": "detect", "wake": 2, "manual": true, "heard": "manual", "t_win_end_us": 29504411881, "t_detect_us": 29504422797, "l1_ms": null, "t_mono_us": 29504423615, "wall": "2026-09-29T17:37:23.527", "session": "20260929-173723-mic3"}
+{"type": "link", "link_host_ms": 6.7, "l2_host_ms": 7.7, "preroll_ms": 250, "t_mono_us": 29504430773, "wall": "2026-09-29T17:37:23.533", "session": "20260929-173723-mic3"}
+{"type": "stream_end", "reason": "key", "audio_ms": 610, "t_mono_us": 29504862472, "wall": "2026-09-29T17:37:23.965", "session": "20260929-173723-mic3"}
+{"type": "asr_final", "text": "", "text_raw": "", "kw": {"mode": "none"}, "decode_lag_median_ms": null, "decode_lag_p90_ms": null, "final_after_last_audio_ms": 340.2, "audio_ms": 690, "rtf": 1.498, "t_mono_us": 29505801605, "wall": "2026-09-29T17:37:24.904", "session": "20260929-173723-mic3"}
+{"type": "final_ready", "final_after_end_ms": 939.4, "t_mono_us": 29505801916, "wall": "2026-09-29T17:37:24.908", "session": "20260929-173723-mic3"}
